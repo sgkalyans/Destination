@@ -9,39 +9,65 @@
     body { font-family: Arial, sans-serif !important; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Top Header: Logo + Google Ads -->
+  <div class="bg-white shadow py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="logo.png" alt="Indian.SG Logo" class="h-12 w-auto" />
+      </div>
+      <div class="hidden md:block">
+        <div class="w-[468px] h-[60px] bg-gray-200 text-center text-sm text-gray-500 flex items-center justify-center border rounded">
+          Google Ad (468x60)
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Navigation Bar -->
   <nav class="bg-blue-600 text-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold">IAEC Portal</div>
-      <div class="space-x-6">
-        <a href="/" class="hover:underline">Home</a>
-        <a href="about.html" class="hover:underline">About</a>
-        <a href="events.html" class="hover:underline">Events</a>
-        <a href="contact.html" class="hover:underline">Contact</a>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center space-x-6 text-sm sm:text-base">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="events.html" class="hover:underline">Events</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
     </div>
   </nav>
 
-  <!-- Cover Image / Hero Section -->
-  <section id="home" class="relative bg-cover bg-center h-96" style="background-image: url('https://images.unsplash.com/photo-1589463349208-95817c91f971?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&ixid=M3wxMjQyMjF8MHwxfHNlYXJjaHwxNHx8bGl0dGxlJTIwaW5kaWF8ZW58MHx8fHwxNzQ2MDc0Mzg1fDI&ixlib=rb-4.0.3&q=80&w=2500&h=714.2857142857143');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="text-center text-white px-6">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to the Indian.SG Events Hub</h1>
-        <p class="text-lg md:text-xl">Discover community events organised by IAECs across Singapore.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 px-6 md:px-12 bg-white">
+  <!-- About Section -->
+  <main class="flex-grow px-6 py-12 bg-white">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">About</h2>
-      <p class="text-gray-700 text-lg">Indian.SG is dedicated to promoting the Tamil language and Indian culture in Singapore. This platform features a curated list of upcoming cultural and educational events to engage families, students, and the wider community.</p>
+      <h1 class="text-4xl font-bold text-blue-700 mb-6">Our Vision & Purpose</h1>
+      <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+        At Indian.SG, we believe in nurturing a society where the Tamil language and Indian heritage are not only preserved,
+        but thrive through the creative spirit and collective pride of the community.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-blue-600 mt-10 mb-4">Our Ambition</h2>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        We aim to be a catalyst for cultural continuity — bringing generations together through shared stories, language, and traditions.
+        Our ambition is to create a vibrant and inclusive space where every child, youth, parent, and elder feels inspired to engage with Tamil,
+        connect with their roots, and contribute meaningfully to Singapore’s multicultural tapestry.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-blue-600 mt-10 mb-4">How We Do It</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        We partner with educators, volunteers, and organizations to deliver initiatives such as storytelling sessions, youth-focused festivals,
+        language enrichment programs, and community events. Our approach is grounded in creativity, relevance, and fun — ensuring that cultural learning
+        is always engaging and accessible.
+      </p>
+
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Join us in shaping a future where Tamil is celebrated not just at home, but in the hearts of all who call Singapore home.
+      </p>
     </div>
-  </section>
+  </main>
+
+  <!-- Footer -->
   <footer class="bg-blue-600 text-white py-4 text-center">
-    <p>&copy; 2025 Indian.SG </p>
+    <p>&copy; 2025 Indian.SG</p>
   </footer>
+
 </body>
 </html>

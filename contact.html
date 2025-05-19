@@ -5,27 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Indian.SG</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Arial, sans-serif !important; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <nav class="bg-blue-600 text-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold">Indian.SG</div>
-      <div class="space-x-6">
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="about.html" class="hover:underline">About</a>
-        <a href="events.html" class="hover:underline">Events</a>
-        <a href="contact.html" class="hover:underline">Contact</a>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Top Header: Logo + Google Ads -->
+  <div class="bg-white shadow py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="logo.png" alt="Indian.SG Logo" class="h-12 w-auto" />
+      </div>
+
+      <!-- Google Ad placeholder -->
+      <div class="hidden md:block">
+        <div class="w-[468px] h-[60px] bg-gray-200 text-center text-sm text-gray-500 flex items-center justify-center border rounded">
+          Google Ad (468x60)
+        </div>
       </div>
     </div>
-  </nav>
-  <section class="py-12 px-6 md:px-12 bg-white">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Contact</h2>
-      <p class="text-gray-700 text-lg">To find out more about our events or collaborate with us, please reach out through <a href="https://www.indian.sg" class="text-blue-600 underline">www.indian.sg</a>.</p>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-blue-600 text-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center space-x-6 text-sm sm:text-base">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="events.html" class="hover:underline">Events</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
     </div>
-  </section>
+  </nav>
+
+  <!-- Contact Content -->
+  <main class="flex-grow px-6 py-12 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-blue-700 mb-6">Get in Touch</h1>
+      <p class="text-lg text-gray-700 mb-6">Have a question, feedback, or want to collaborate? Reach out to us!</p>
+
+      <!-- Contact Info -->
+      <div class="text-left bg-gray-100 p-6 rounded-md shadow mb-10">
+        <p class="mb-3"><strong>Email:</strong> <a href="mailto:contact@indian.sg" class="text-blue-600 hover:underline">contact@indian.sg</a></p>
+        <p class="mb-3"><strong>Instagram:</strong> <a href="https://instagram.com/indiansg" target="_blank" class="text-blue-600 hover:underline">@indiansg</a></p>
+        <p><strong>Website:</strong> <a href="https://www.indian.sg" class="text-blue-600 hover:underline">www.indian.sg</a></p>
+      </div>
+
+      <!-- Optional Contact Form Placeholder -->
+      <form class="bg-white border p-6 rounded-lg shadow-md space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded" required>
+        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded" required>
+        <textarea rows="5" placeholder="Your Message" class="w-full p-3 border rounded" required></textarea>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
   <footer class="bg-blue-600 text-white py-4 text-center">
-    <p>&copy; 2025 Indian.SG Events Portal</p>
+    <p>&copy; 2025 Indian.SG</p>
   </footer>
+
 </body>
 </html>

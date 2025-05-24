@@ -57,12 +57,42 @@
         language classes, and cultural events. Our goal is to make learning Tamil and Indian culture enjoyable, creative, and easy for everyone to join.
       </p>
     </div>
+
+    <!-- Tamil Word Game Section -->
+<section class="mt-12 border-t pt-10">
+  <h2 class="text-2xl font-bold text-pink-600 mb-4 text-center">முரசு சொல்லாட்டம்</h2>
+  <p class="text-center text-gray-600 mb-6">உங்கள் தமிழ் மொழித்திறனைச் சோதிக்கவும்!</p>
+
+  <div class="max-w-xl mx-auto text-center bg-pink-50 p-6 rounded shadow">
+    <p class="text-lg mb-4">Modern = ?</p>
+    <div class="space-y-3">
+      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">பழைய</button>
+      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">நவீன</button>
+      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">தீவிரம்</button>
+    </div>
+    <p id="result" class="mt-4 font-semibold"></p>
+  </div>
+</section>
   </main>
 
   <!-- Footer -->
   <footer class="bg-blue-600 text-white py-4 text-center">
     <p>&copy; 2025 Indian.SG</p>
   </footer>
+<script>
+  function checkAnswer(button) {
+    const correctAnswer = "நவீன";
+    const result = document.getElementById("result");
+
+    if (button.innerText === correctAnswer) {
+      result.innerText = "சரி! நீங்கள் தேர்வை வெற்றிகரமாக முடித்தீர்கள்!";
+      result.style.color = "green";
+    } else {
+      result.innerText = "தவறு. மீண்டும் முயற்சிக்கவும்.";
+      result.style.color = "red";
+    }
+  }
+</script>
 
 </body>
 </html>

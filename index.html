@@ -12,8 +12,8 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Header: Logo + Google Ads -->
-  <header class="bg-white shadow py-4 px-6">
+  <!-- Top Header: Logo + Responsive Google Ads -->
+  <div class="bg-white shadow py-4 px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:justify-between gap-4">
 
       <!-- Logo -->
@@ -21,21 +21,46 @@
         <img src="logo.png" alt="Indian.SG Logo" class="h-12 w-auto" />
       </div>
 
-      <!-- Google Ad -->
-      <div class="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto md:mx-0">
-        <ins class="adsbygoogle"
-             style="display:block;height:49px;"
-             data-ad-client="ca-pub-4438379661136410"
-             data-ad-slot="5119715101"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+      <!-- Responsive Google Ad -->
+      <div class="w-full md:w-auto">
+        <!-- Desktop Ad -->
+        <div class="hidden md:flex w-[468px] h-[60px] bg-gray-200 text-center text-sm text-gray-500 items-center justify-center border rounded">
+           <!-- Google Ad placeholder -->
+    
+
+        
+<!-- Header Banner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:60px"
+     data-ad-client="ca-pub-4438379661136410"
+     data-ad-slot="5119715101"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+   
+      
+        </div>
+        <!-- Mobile Ad -->
+        <div class="flex md:hidden w-[320px] h-[50px] bg-gray-200 text-center text-sm text-gray-500 items-center justify-center border rounded">
+        
+           <!-- Google Ad placeholder -->
+     
+
+<!-- Header Banner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:60px"
+     data-ad-client="ca-pub-4438379661136410"
+     data-ad-slot="5119715101"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+   
+    
+        </div>
       </div>
 
     </div>
-  </header>
+  </div>
 
   <!-- Navigation -->
   <nav class="bg-blue-600 text-white">

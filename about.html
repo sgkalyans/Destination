@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About | Indian.SG</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron: '#FF9933',
+            turmeric: '#FFC107',
+            vermilion: '#E53935',
+            leafgreen: '#4CAF50',
+            indigo: '#3F51B5'
+          }
+        }
+      }
+    }
+  </script>
   <style>
     body { font-family: Arial, sans-serif !important; }
   </style>
@@ -26,7 +41,7 @@
   </div>
 
   <!-- Navigation Bar -->
-  <nav class="bg-blue-600 text-white shadow">
+  <nav class="bg-saffron text-white shadow">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center space-x-6 text-sm sm:text-base">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="about.html" class="hover:underline">About</a>
@@ -38,61 +53,63 @@
   <!-- About Section -->
   <main class="flex-grow px-6 py-12 bg-white">
     <div class="max-w-5xl mx-auto text-center">
-      <h1 class="text-4xl font-bold text-blue-700 mb-6">Our Vision & Purpose</h1>
+      <h1 class="text-4xl font-bold text-indigo mb-6">Our Vision & Purpose</h1>
       <p class="text-lg text-gray-700 mb-6 leading-relaxed">
         At Indian.SG, we stand as a symbol of cultural exchange and unity. We bring people together by sharing the beauty of Tamil language and Indian culture.
         Through fun and creative events, we help different communities in Singapore connect, understand each other better, and celebrate together with joy and pride.
       </p>
 
-      <h2 class="text-2xl font-semibold text-blue-600 mt-10 mb-4">Our Ambition</h2>
+      <h2 class="text-2xl font-semibold text-indigo mt-10 mb-4">Our Ambition</h2>
       <p class="text-lg text-gray-700 leading-relaxed">
         We hope to bring people of all ages together through stories, language, and traditions.
         Our goal is to create a friendly and welcoming space where children, youth, parents, and grandparents feel excited to learn Tamil,
         stay connected to their roots, and play a part in Singapore’s multicultural story.
       </p>
 
-      <h2 class="text-2xl font-semibold text-blue-600 mt-10 mb-4">How We Do It</h2>
-      <p class="text-lg text-gray-700 leading-relaxed">
+      <h2 class="text-2xl font-semibold text-indigo mt-10 mb-4">How We Do It</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
         We work with teachers, volunteers, and community groups to run fun and meaningful activities — like storytelling, youth festivals,
         language classes, and cultural events. Our goal is to make learning Tamil and Indian culture enjoyable, creative, and easy for everyone to join.
       </p>
-    </div>
 
-    <!-- Tamil Word Game Section -->
-<section class="mt-12 border-t pt-10">
-  <h2 class="text-2xl font-bold text-pink-600 mb-4 text-center">முரசு சொல்லாட்டம்</h2>
-  <p class="text-center text-gray-600 mb-6">உங்கள் தமிழ் மொழித்திறனைச் சோதிக்கவும்!</p>
+      <!-- Tamil Word Game Section -->
+      <section class="mt-12 border-t pt-10">
+        <h2 class="text-2xl font-bold text-vermilion mb-4">முரசு சொல்லாட்டம்</h2>
+        <p class="text-center text-gray-600 mb-6">உங்கள் தமிழ் மொழித்திறனைச் சோதிக்கவும்!</p>
 
-  <div class="max-w-xl mx-auto text-center bg-pink-50 p-6 rounded shadow">
-    <p class="text-lg mb-4">Modern = ?</p>
-    <div class="space-y-3">
-      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">பழைய</button>
-      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">நவீன</button>
-      <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-pink-100">தீவிரம்</button>
+        <div class="max-w-xl mx-auto text-center bg-orange-50 p-6 rounded shadow">
+          <p class="text-lg mb-4">Modern = ?</p>
+          <div class="space-y-3">
+            <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-leafgreen transition">பழைய</button>
+            <button onclick="checkAnswer(this)" class="block w-full bg-turmeric rounded py-2 border hover:bg-leafgreen transition">நவீன</button>
+            <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-leafgreen transition">தீவிரம்</button>
+          </div>
+          <p id="result" class="mt-4 font-semibold"></p>
+        </div>
+      </section>
     </div>
-    <p id="result" class="mt-4 font-semibold"></p>
-  </div>
-</section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-blue-600 text-white py-4 text-center">
+  <footer class="bg-saffron text-white py-4 text-center">
     <p>&copy; 2025 Indian.SG</p>
   </footer>
-<script>
-  function checkAnswer(button) {
-    const correctAnswer = "நவீன";
-    const result = document.getElementById("result");
 
-    if (button.innerText === correctAnswer) {
-      result.innerText = "சரி! நீங்கள் தேர்வை வெற்றிகரமாக முடித்தீர்கள்!";
-      result.style.color = "green";
-    } else {
-      result.innerText = "தவறு. மீண்டும் முயற்சிக்கவும்.";
-      result.style.color = "red";
+  <!-- Game Script -->
+  <script>
+    function checkAnswer(button) {
+      const correctAnswer = "நவீன";
+      const result = document.getElementById("result");
+
+      if (button.innerText === correctAnswer) {
+        result.innerText = "சரி! நீங்கள் தேர்வை வெற்றிகரமாக முடித்தீர்கள்!";
+        result.style.color = "#4CAF50"; // Leaf Green
+      } else {
+        result.innerText = "தவறு. மீண்டும் முயற்சிக்கவும்.";
+        result.style.color = "#E53935"; // Vermilion Red
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>

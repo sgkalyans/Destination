@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Indian.SG | Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -12,13 +12,16 @@
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- Header: Logo + Google Ads -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 py-4 px-6">
-      <div class="flex items-center space-x-3">
-        <img src="logo.png" alt="Indian.SG Logo" class="h-12 w-auto" />
+  <!-- Top Header: Logo + Ad + Social -->
+  <div class="bg-white border-b shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+      <!-- Left: Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="logo.png" alt="Indian.SG Logo" class="h-10 w-auto" />
       </div>
-      <div class="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto md:mx-0">
+
+      <!-- Center: Google Ad -->
+      <div class="w-full md:w-auto md:flex-1 flex justify-center">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-XXXXXXXXXXXX"
@@ -29,12 +32,20 @@
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
+
+      <!-- Right: Social Icons -->
+      <div class="flex space-x-4 text-blue-600 text-xl">
+        <a href="https://instagram.com/indiansg" target="_blank">📷</a>
+        <a href="mailto:contact@indian.sg">✉️</a>
+        <a href="https://facebook.com/indiansg" target="_blank">👍</a>
+        <a href="https://youtube.com/@indiansg" target="_blank">🎥</a>
+      </div>
     </div>
-  </header>
+  </div>
 
   <!-- Navigation -->
-  <nav class="bg-blue-600 text-white shadow">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-6">
+  <nav class="bg-blue-600 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-8 text-sm sm:text-base">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="about.html" class="hover:underline">About</a>
       <a href="events.html" class="hover:underline">Events</a>
@@ -43,17 +54,17 @@
   </nav>
 
   <!-- Hero Banner -->
-  <section class="relative bg-cover bg-center h-[85vh]" style="background-image: url('https://source.unsplash.com/1600x900/?indian,festival');">
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center">
-      <div class="text-white px-6">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Indian.SG</h1>
-        <p class="text-lg md:text-2xl mb-6">Celebrating Language. Culture. Community.</p>
-        <a href="events.html" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-blue-100 transition">Explore Events</a>
-      </div>
+  <section class="relative h-[85vh] bg-cover bg-center flex items-center justify-center text-center text-white"
+           style="background-image: url('https://source.unsplash.com/1600x900/?india,festival');">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative z-10 px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Indian.SG</h1>
+      <p class="text-lg md:text-2xl mb-6">Celebrating Language. Culture. Community.</p>
+      <a href="events.html" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-blue-100 transition">Explore Events</a>
     </div>
   </section>
 
-  <!-- Events Preview -->
+  <!-- Featured Events -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold text-blue-700 mb-10">Featured Events</h2>
@@ -61,69 +72,55 @@
         <div class="bg-white rounded-lg shadow-md p-5">
           <h3 class="text-xl font-semibold text-blue-600 mb-2">Mazhalaiyar Pattu</h3>
           <p class="text-sm text-gray-600 mb-2">May 2025</p>
-          <p class="text-gray-700 text-sm">A folk song competition for K1 & K2 kids, filled with joy and learning.</p>
+          <p class="text-gray-700 text-sm">Folk song contest for preschoolers showcasing rhythm and language.</p>
           <a href="events.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">More Info</a>
         </div>
         <div class="bg-white rounded-lg shadow-md p-5">
           <h3 class="text-xl font-semibold text-blue-600 mb-2">Tamil Bootcamp</h3>
           <p class="text-sm text-gray-600 mb-2">April 2025</p>
-          <p class="text-gray-700 text-sm">Fun Tamil learning through play, storytelling, and games for preschoolers.</p>
+          <p class="text-gray-700 text-sm">Interactive language fun with stories, games, and culture for young learners.</p>
           <a href="events.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">More Info</a>
         </div>
         <div class="bg-white rounded-lg shadow-md p-5">
-          <h3 class="text-xl font-semibold text-blue-600 mb-2">Cultural Carnival</h3>
-          <p class="text-sm text-gray-600 mb-2">July 2025</p>
-          <p class="text-gray-700 text-sm">Celebrate Indian traditions with music, food, and performances for all ages.</p>
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">Cultural Fiesta</h3>
+          <p class="text-sm text-gray-600 mb-2">June 2025</p>
+          <p class="text-gray-700 text-sm">A vibrant showcase of Indian traditions, music, and food for all ages.</p>
           <a href="events.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">More Info</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News Section -->
+  <!-- News & Features -->
   <section class="bg-white py-16 px-6">
     <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-700 mb-10">News & Features</h2>
+      <h2 class="text-3xl font-bold text-blue-700 mb-10">News & Highlights</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
         <div class="bg-gray-100 rounded-lg p-5 shadow">
-          <h3 class="text-lg font-semibold text-blue-600 mb-2">Spotlight: Volunteers Behind the Scenes</h3>
+          <h3 class="text-lg font-semibold text-blue-600 mb-2">Behind the Scenes</h3>
           <p class="text-sm text-gray-600 mb-2">March 2025</p>
-          <p class="text-sm text-gray-700">Meet the team who brings every Indian.SG event to life, one story at a time.</p>
-          <a href="article1.html" class="text-blue-500 hover:underline mt-2 inline-block text-sm">Read More</a>
+          <p class="text-sm text-gray-700">The volunteers making our events unforgettable share their stories.</p>
+          <a href="article1.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">Read More</a>
         </div>
         <div class="bg-gray-100 rounded-lg p-5 shadow">
-          <h3 class="text-lg font-semibold text-blue-600 mb-2">Tamil Festival Draws Record Turnout</h3>
+          <h3 class="text-lg font-semibold text-blue-600 mb-2">Tamil Festival Turnout</h3>
           <p class="text-sm text-gray-600 mb-2">February 2025</p>
-          <p class="text-sm text-gray-700">A beautiful celebration of language and identity across generations.</p>
-          <a href="article2.html" class="text-blue-500 hover:underline mt-2 inline-block text-sm">Read More</a>
+          <p class="text-sm text-gray-700">An amazing celebration of Tamil language and identity through music and drama.</p>
+          <a href="article2.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">Read More</a>
         </div>
         <div class="bg-gray-100 rounded-lg p-5 shadow">
-          <h3 class="text-lg font-semibold text-blue-600 mb-2">Behind the Colours: Vannathamizh 2025</h3>
+          <h3 class="text-lg font-semibold text-blue-600 mb-2">Vannathamizh 2025</h3>
           <p class="text-sm text-gray-600 mb-2">January 2025</p>
-          <p class="text-sm text-gray-700">Pre-schoolers and parents gathered for a vibrant colouring competition.</p>
-          <a href="article3.html" class="text-blue-500 hover:underline mt-2 inline-block text-sm">Read More</a>
+          <p class="text-sm text-gray-700">Our preschool colouring competition celebrates culture through creativity.</p>
+          <a href="article3.html" class="text-blue-500 hover:underline text-sm mt-2 inline-block">Read More</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Media -->
-  <section class="py-12 bg-gray-50 text-center">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-blue-700 mb-4">Stay Connected</h2>
-      <p class="text-md text-gray-600 mb-6">Follow Indian.SG for updates, videos & community stories.</p>
-      <div class="flex justify-center space-x-6 text-blue-600 text-2xl">
-        <a href="https://instagram.com/indiansg" target="_blank" title="Instagram">📷</a>
-        <a href="mailto:contact@indian.sg" title="Email">✉️</a>
-        <a href="https://facebook.com/indiansg" target="_blank" title="Facebook">👍</a>
-        <a href="https://youtube.com/@indiansg" target="_blank" title="YouTube">🎥</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-600 text-white py-4 text-center">
-    <p>&copy; 2025 Indian.SG</p>
+  <footer class="bg-blue-900 text-white py-6 text-center">
+    <p class="text-sm">&copy; 2025 Indian.SG &nbsp; | &nbsp; All rights reserved</p>
   </footer>
 
 </body>

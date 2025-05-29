@@ -60,18 +60,14 @@
       <div class="bg-orange-50 p-6 rounded shadow">
         <h2 class="text-2xl font-semibold text-indigo mb-4">Our Vision & Purpose</h2>
         <p class="text-gray-700 leading-relaxed">
-          At Indian.SG, we stand as a symbol of cultural exchange and unity. We bring people together by sharing the beauty of Tamil language and Indian culture.
-          Through fun and creative events, we help different communities in Singapore connect, understand each other better, and celebrate together with joy and pride.
-        </p>
+          At Indian.SG, we stand as a symbol of cultural exchange and unity. Through fun and creative events, we bring people together, helping different communities in Singapore connect, understand one another better, and celebrate with joy and pride.</p>
       </div>
 
       <!-- Our Ambition -->
       <div class="bg-orange-50 p-6 rounded shadow">
         <h2 class="text-2xl font-semibold text-indigo mb-4">Our Ambition</h2>
         <p class="text-gray-700 leading-relaxed">
-          We hope to bring people of all ages together through stories, language, and traditions.
-          Our goal is to create a friendly and welcoming space where children, youth, parents, and grandparents feel excited to learn Tamil,
-          stay connected to their roots, and play a part in Singapore’s multicultural story.
+         Our goal is to create a friendly, welcoming space where children, youth, parents, and grandparents feel inspired to stay connected to their roots—and play a meaningful role in Singapore’s multicultural journey.
         </p>
       </div>
 
@@ -79,28 +75,12 @@
       <div class="bg-orange-50 p-6 rounded shadow">
         <h2 class="text-2xl font-semibold text-indigo mb-4">How We Do It</h2>
         <p class="text-gray-700 leading-relaxed">
-          We work with teachers, volunteers, and community groups to run fun and meaningful activities — like storytelling, youth festivals,
-          language classes, and cultural events. Our goal is to make learning Tamil and Indian culture enjoyable, creative, and easy for everyone to join.
+          We collaborate with community organisations to run fun and meaningful activities—like storytelling sessions, youth festivals, language festivals, and cultural events.
         </p>
       </div>
     </div>
 
-    <!-- Word Game Section Below Grid -->
-    <section class="mt-16 border-t pt-10">
-      <h2 class="text-2xl font-bold text-vermilion mb-4">முரசு சொல்லாட்டம்</h2>
-      <p class="text-center text-gray-600 mb-6">உங்கள் தமிழ் மொழித்திறனைச் சோதிக்கவும்!</p>
-
-      <div class="max-w-xl mx-auto text-center bg-orange-50 p-6 rounded shadow">
-        <p class="text-lg mb-4">Modern = ?</p>
-        <div class="space-y-3">
-          <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-leafgreen transition">பழைய</button>
-          <button onclick="checkAnswer(this)" class="block w-full bg-turmeric rounded py-2 border hover:bg-leafgreen transition">நவீன</button>
-          <button onclick="checkAnswer(this)" class="block w-full bg-white rounded py-2 border hover:bg-leafgreen transition">தீவிரம்</button>
-        </div>
-        <p id="result" class="mt-4 font-semibold"></p>
-      </div>
-    </section>
-  </div>
+     
 </main>
   
 
@@ -109,21 +89,7 @@
     <p>&copy; 2025 Indian.SG</p>
   </footer>
 
-  <!-- Game Script -->
-  <script>
-    function checkAnswer(button) {
-      const correctAnswer = "நவீன";
-      const result = document.getElementById("result");
 
-      if (button.innerText === correctAnswer) {
-        result.innerText = "சரி! நீங்கள் தேர்வை வெற்றிகரமாக முடித்தீர்கள்!";
-        result.style.color = "#4CAF50"; // Leaf Green
-      } else {
-        result.innerText = "தவறு. மீண்டும் முயற்சிக்கவும்.";
-        result.style.color = "#E53935"; // Vermilion Red
-      }
-    }
-  </script>
 
 </body>
 </html>

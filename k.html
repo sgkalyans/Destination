@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="corporate">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subject Teaching Planner (Mock)</title>
+    <title>Teaching Planner (Static Mock)</title>
 
     <!-- DaisyUI (includes Tailwind utilities in the compiled CSS) -->
     <link
@@ -14,407 +14,490 @@
   </head>
 
   <body class="min-h-screen bg-base-200">
-    <!-- Navbar -->
-    <div class="navbar bg-base-100 border-b border-base-300 sticky top-0 z-50">
-      <div class="navbar-start">
-        <div class="dropdown lg:hidden">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-square">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                 viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
+    <!-- Top Nav -->
+    <header class="sticky top-0 z-50 border-b border-base-300 bg-base-100/90 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="navbar px-0">
+          <div class="navbar-start gap-2">
+            <button class="btn btn-ghost btn-square lg:hidden" aria-label="menu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+
+            <div class="flex items-center gap-3">
+              <div class="avatar placeholder">
+                <div class="bg-primary text-primary-content w-10 rounded-2xl">
+                  <span class="font-bold">TP</span>
+                </div>
+              </div>
+              <div class="leading-tight">
+                <div class="text-lg font-semibold">Teaching Planner</div>
+                <div class="text-xs opacity-70">Weekly plan • Topics • Activities</div>
+              </div>
+            </div>
           </div>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56">
-            <li><a>Plan</a></li>
-            <li><a>Resources</a></li>
-            <li><a>Settings</a></li>
-          </ul>
-        </div>
 
-        <a class="btn btn-ghost text-xl gap-2">
-          <span class="badge badge-neutral badge-lg hidden sm:inline">Mock</span>
-          Subject Teaching Planner
-        </a>
-      </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal gap-1">
+              <li><a class="active">Plan</a></li>
+              <li><a>Resources</a></li>
+              <li><a>Templates</a></li>
+              <li><a>Settings</a></li>
+            </ul>
+          </div>
 
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a class="active">Plan</a></li>
-          <li><a>Resources</a></li>
-          <li><a>Settings</a></li>
-        </ul>
-      </div>
+          <div class="navbar-end gap-2">
+            <div class="hidden md:flex items-center gap-2">
+              <span class="text-xs opacity-70">Subject</span>
+              <span class="badge badge-primary badge-outline">Tamil • Primary 3</span>
+              <span class="badge badge-ghost">AY 2026</span>
+              <span class="badge badge-ghost">Term 1</span>
+            </div>
 
-      <div class="navbar-end gap-2">
-        <div class="hidden sm:flex items-center gap-2">
-          <span class="text-sm opacity-70">Subject:</span>
-          <span class="badge badge-primary">Tamil – Primary 3</span>
-        </div>
+            <button class="btn btn-ghost btn-square" aria-label="notifications">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6 6 0 1 0-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 1 1-6 0m6 0H9"/>
+              </svg>
+            </button>
 
-        <!-- Theme toggle (purely visual) -->
-        <label class="swap swap-rotate btn btn-ghost btn-square">
-          <input type="checkbox" />
-          <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24">
-            <path d="M5.64 17l-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17zM5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1A1 1 0 0 0 5 12zm7-7a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1A1 1 0 0 0 12 5zm7 7a1 1 0 0 0 1 1h1a1 1 0 0 0 0-2h-1A1 1 0 0 0 19 12zm-1.64 5a1 1 0 0 0 0 1.41l.71.71a1 1 0 0 0 1.41-1.41l-.71-.71A1 1 0 0 0 17.36 17zM12 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1A1 1 0 0 0 12 19zm6.36-11a1 1 0 0 0 1.41 0l.71-.71a1 1 0 1 0-1.41-1.41l-.71.71A1 1 0 0 0 18.36 8zM4.93 6.88A1 1 0 0 0 6.34 5.47l-.71-.71A1 1 0 0 0 4.22 6.18l.71.7z"/>
-            <path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6z"/>
-          </svg>
-          <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24">
-            <path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36 10.14 10.14 0 1 0 22 14.05a1 1 0 0 0-.36-1.05z"/>
-          </svg>
-        </label>
-
-        <div class="avatar placeholder">
-          <div class="bg-neutral text-neutral-content rounded-full w-9">
-            <span class="text-sm">KS</span>
+            <div class="dropdown dropdown-end">
+              <div tabindex="0" role="button" class="btn btn-ghost gap-2">
+                <div class="avatar placeholder">
+                  <div class="bg-neutral text-neutral-content w-9 rounded-full">
+                    <span class="text-sm">KS</span>
+                  </div>
+                </div>
+                <span class="hidden sm:inline text-sm font-medium">Kalyan</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-70" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56">
+                <li><a>Profile</a></li>
+                <li><a>Help</a></li>
+                <li><a class="text-error">Logout</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Page -->
-    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-      <!-- Header / Week selector -->
-      <section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <!-- Hero / Week selector -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <div class="lg:col-span-8">
-          <div class="card bg-base-100 border border-base-300">
-            <div class="card-body gap-4">
-              <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
+            <div class="card-body gap-5">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 <div>
-                  <h1 class="card-title text-2xl">Teaching Plan</h1>
-                  <p class="text-sm opacity-70">
-                    Select a week → choose a topic tab → fill panels (content, outcomes, activities, quiz, guides).
+                  <div class="breadcrumbs text-sm">
+                    <ul>
+                      <li><a>Home</a></li>
+                      <li><a>Plan</a></li>
+                      <li>Weekly View</li>
+                    </ul>
+                  </div>
+                  <h1 class="text-2xl sm:text-3xl font-semibold mt-2">Weekly Teaching Plan</h1>
+                  <p class="text-sm opacity-70 mt-1">
+                    Choose a week, then switch topic tabs and fill in panels (files, outcomes, activities, quiz, guide).
                   </p>
                 </div>
 
-                <div class="flex items-center gap-2">
-                  <span class="badge badge-outline">AY 2026</span>
-                  <span class="badge badge-outline">Term 1</span>
+                <div class="flex gap-2">
+                  <button class="btn btn-outline btn-sm rounded-full">Duplicate week</button>
+                  <button class="btn btn-primary btn-sm rounded-full">New topic</button>
                 </div>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
                 <!-- Week dropdown -->
-                <label class="form-control md:col-span-2">
-                  <div class="label">
-                    <span class="label-text font-medium">Week</span>
-                    <span class="label-text-alt opacity-70">Dropdown (static mock)</span>
-                  </div>
-                  <select class="select select-bordered w-full">
-                    <option selected>Week 1 — Introduction to Letters (Commence: 02 Feb 2026)</option>
-                    <option>Week 2 — Word Formation (Commence: 09 Feb 2026)</option>
-                    <option>Week 3 — Sentence Building (Commence: 16 Feb 2026)</option>
-                    <option>Week 4 — Reading Fluency (Commence: 23 Feb 2026)</option>
-                  </select>
-                </label>
+                <div class="md:col-span-7">
+                  <label class="form-control">
+                    <div class="label">
+                      <span class="label-text font-medium">Select Week</span>
+                      <span class="label-text-alt opacity-70">Static mock</span>
+                    </div>
+                    <select class="select select-bordered rounded-2xl w-full">
+                      <option selected>Week 1 — Introduction to Letters</option>
+                      <option>Week 2 — Word Formation</option>
+                      <option>Week 3 — Sentence Building</option>
+                      <option>Week 4 — Reading Fluency</option>
+                    </select>
+                  </label>
+                </div>
 
-                <!-- Quick actions -->
-                <div class="flex md:justify-end md:items-end gap-2">
-                  <button class="btn btn-primary w-full md:w-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 4v16m8-8H4"/>
-                    </svg>
-                    Add Topic
-                  </button>
-                  <button class="btn btn-ghost w-full md:w-auto">Export</button>
+                <!-- Commence + meta -->
+                <div class="md:col-span-5">
+                  <div class="grid grid-cols-2 gap-3 h-full">
+                    <div class="card bg-base-200 border border-base-300 rounded-2xl">
+                      <div class="card-body p-4">
+                        <div class="text-xs opacity-70">Commence</div>
+                        <div class="text-lg font-semibold">02 Feb 2026</div>
+                        <div class="text-xs opacity-60">Mon</div>
+                      </div>
+                    </div>
+                    <div class="card bg-base-200 border border-base-300 rounded-2xl">
+                      <div class="card-body p-4">
+                        <div class="text-xs opacity-70">Status</div>
+                        <div class="flex flex-wrap gap-2 mt-1">
+                          <span class="badge badge-success badge-outline">Ready</span>
+                          <span class="badge badge-warning badge-outline">Quiz pending</span>
+                        </div>
+                        <div class="text-xs opacity-60 mt-1">Auto badges later</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <!-- Week summary -->
-              <div class="stats stats-vertical sm:stats-horizontal bg-base-200 border border-base-300">
-                <div class="stat">
-                  <div class="stat-title">Topics</div>
-                  <div class="stat-value text-primary">3</div>
-                  <div class="stat-desc">For selected week</div>
+              <!-- Quick stats -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="card bg-base-200 border border-base-300 rounded-2xl">
+                  <div class="card-body p-4">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-xs opacity-70">Topics</div>
+                        <div class="text-2xl font-semibold">3</div>
+                      </div>
+                      <div class="badge badge-ghost">Week 1</div>
+                    </div>
+                  </div>
                 </div>
-                <div class="stat">
-                  <div class="stat-title">Planned files</div>
-                  <div class="stat-value">5</div>
-                  <div class="stat-desc">Slides, worksheet, audio</div>
+                <div class="card bg-base-200 border border-base-300 rounded-2xl">
+                  <div class="card-body p-4">
+                    <div class="text-xs opacity-70">Content files</div>
+                    <div class="text-2xl font-semibold">5</div>
+                    <div class="text-xs opacity-60">Slides • WS • Audio</div>
+                  </div>
                 </div>
-                <div class="stat">
-                  <div class="stat-title">Quizzes</div>
-                  <div class="stat-value">2</div>
-                  <div class="stat-desc">MCQ + short answer</div>
+                <div class="card bg-base-200 border border-base-300 rounded-2xl">
+                  <div class="card-body p-4">
+                    <div class="text-xs opacity-70">Activities</div>
+                    <div class="text-2xl font-semibold">4</div>
+                    <div class="text-xs opacity-60">Role-play • Practice</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right sidebar -->
+        <!-- Right: Notes + Checklist -->
         <aside class="lg:col-span-4">
-          <div class="card bg-base-100 border border-base-300 h-full">
-            <div class="card-body">
-              <h2 class="card-title">Week Notes</h2>
-              <p class="text-sm opacity-70">
-                Use this area for teacher reminders, pacing, and special considerations.
-              </p>
-              <textarea class="textarea textarea-bordered min-h-32" placeholder="e.g., Focus on pronunciation. Extra practice for slow learners."></textarea>
-
-              <div class="divider my-2"></div>
-
-              <div class="flex flex-wrap gap-2">
-                <span class="badge badge-success">Ready</span>
-                <span class="badge badge-warning">Needs quiz</span>
-                <span class="badge badge-info">Role-play planned</span>
+          <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
+            <div class="card-body gap-4">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h2 class="text-lg font-semibold">Teacher Notes</h2>
+                  <p class="text-sm opacity-70">Personal reminders for this week</p>
+                </div>
+                <span class="badge badge-ghost">Private</span>
               </div>
 
-              <div class="card-actions justify-end mt-3">
-                <button class="btn btn-outline btn-sm">Save Notes</button>
+              <textarea
+                class="textarea textarea-bordered rounded-2xl min-h-28"
+                placeholder="E.g., Slow learners: extra tracing sheets. Pronunciation drill first 5 mins."
+              ></textarea>
+
+              <div class="divider my-1"></div>
+
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-medium">Week checklist</div>
+                <button class="btn btn-ghost btn-xs rounded-full">Reset</button>
+              </div>
+
+              <div class="space-y-2">
+                <label class="label cursor-pointer justify-start gap-3">
+                  <input type="checkbox" class="checkbox checkbox-primary" checked />
+                  <span class="label-text">Learning outcomes added</span>
+                </label>
+                <label class="label cursor-pointer justify-start gap-3">
+                  <input type="checkbox" class="checkbox checkbox-primary" />
+                  <span class="label-text">Quiz prepared</span>
+                </label>
+                <label class="label cursor-pointer justify-start gap-3">
+                  <input type="checkbox" class="checkbox checkbox-primary" checked />
+                  <span class="label-text">Role play planned</span>
+                </label>
+                <label class="label cursor-pointer justify-start gap-3">
+                  <input type="checkbox" class="checkbox checkbox-primary" />
+                  <span class="label-text">Study guide ready</span>
+                </label>
+              </div>
+
+              <div class="card-actions justify-end">
+                <button class="btn btn-outline btn-sm rounded-full">Save notes</button>
+                <button class="btn btn-primary btn-sm rounded-full">Publish</button>
               </div>
             </div>
           </div>
         </aside>
       </section>
 
-      <!-- Topic Tabs -->
+      <!-- Topics + Panels -->
       <section class="mt-6">
-        <div class="card bg-base-100 border border-base-300">
-          <div class="card-body">
-            <div class="flex items-center justify-between gap-3 flex-wrap">
-              <h2 class="card-title">Topics (Week 1)</h2>
+        <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
+          <div class="card-body gap-5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <h2 class="text-xl font-semibold">Topics</h2>
+                <p class="text-sm opacity-70">Switch topic tab to edit its learning materials</p>
+              </div>
+
               <div class="join">
-                <button class="btn btn-sm join-item btn-outline">Prev</button>
-                <button class="btn btn-sm join-item btn-outline">Next</button>
+                <button class="btn btn-sm join-item rounded-l-full">Prev</button>
+                <button class="btn btn-sm join-item">Next</button>
+                <button class="btn btn-sm join-item rounded-r-full btn-primary">Add topic</button>
               </div>
             </div>
 
-            <!-- DaisyUI tabs using radio inputs (no JS needed) -->
-            <div role="tablist" class="tabs tabs-bordered mt-2">
-              <input type="radio" name="topic_tabs" role="tab" class="tab" aria-label="Topic A" checked />
-              <div role="tabpanel" class="tab-content pt-5">
-                <!-- Panels grid -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                  <!-- Content Files -->
-                  <div class="lg:col-span-6">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">📂 Content Files</h3>
-                          <button class="btn btn-xs btn-primary">Add</button>
-                        </div>
+            <!-- Topic Tabs (pill style) -->
+            <div class="flex flex-wrap gap-2">
+              <input type="radio" name="topic" id="t1" class="hidden peer/t1" checked />
+              <label for="t1" class="btn btn-sm rounded-full btn-primary">Topic A • Letters அ ஆ இ</label>
 
-                        <div class="alert alert-info text-sm">
-                          <span>Static mock: file picker + list preview.</span>
-                        </div>
+              <input type="radio" name="topic" id="t2" class="hidden peer/t2" />
+              <label for="t2" class="btn btn-sm rounded-full btn-outline">Topic B • Writing practice</label>
 
-                        <input type="file" class="file-input file-input-bordered w-full" />
-                        <ul class="menu bg-base-200 rounded-box">
-                          <li><a>Slides_Week1_TopicA.pdf <span class="badge badge-ghost">PDF</span></a></li>
-                          <li><a>Worksheet_A1.docx <span class="badge badge-ghost">DOCX</span></a></li>
-                          <li><a>Audio_Pronunciation.mp3 <span class="badge badge-ghost">MP3</span></a></li>
-                        </ul>
+              <input type="radio" name="topic" id="t3" class="hidden peer/t3" />
+              <label for="t3" class="btn btn-sm rounded-full btn-outline">Topic C • Pronunciation</label>
+            </div>
 
-                        <div class="card-actions justify-end">
-                          <button class="btn btn-outline btn-sm">Manage Files</button>
-                        </div>
+            <!-- Panels Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+              <!-- Content Files -->
+              <div class="lg:col-span-5">
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <div class="badge badge-primary badge-outline">Files</div>
+                        <h3 class="font-semibold">Content Files</h3>
                       </div>
+                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
                     </div>
-                  </div>
 
-                  <!-- Learning Outcomes -->
-                  <div class="lg:col-span-6">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">🎯 Learning Outcomes</h3>
-                          <button class="btn btn-xs btn-outline">Edit</button>
-                        </div>
+                    <input type="file" class="file-input file-input-bordered w-full rounded-2xl" />
 
-                        <div class="space-y-2">
-                          <label class="label p-0">
-                            <span class="label-text">What students should achieve</span>
-                          </label>
-                          <textarea class="textarea textarea-bordered min-h-32"
-                            placeholder="- Recognise letters அ, ஆ, இ
-- Pronounce with correct vowel sound
-- Write strokes with correct order"></textarea>
-                        </div>
-
-                        <div class="card-actions justify-end">
-                          <button class="btn btn-primary btn-sm">Save</button>
-                        </div>
-                      </div>
+                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
+                      <div class="text-xs opacity-70 mb-2">Uploaded (mock)</div>
+                      <ul class="space-y-2">
+                        <li class="flex items-center justify-between">
+                          <div class="flex items-center gap-2">
+                            <span class="badge badge-ghost">PDF</span>
+                            <span class="text-sm font-medium">Slides_TopicA.pdf</span>
+                          </div>
+                          <button class="btn btn-ghost btn-xs rounded-full">Open</button>
+                        </li>
+                        <li class="flex items-center justify-between">
+                          <div class="flex items-center gap-2">
+                            <span class="badge badge-ghost">DOCX</span>
+                            <span class="text-sm font-medium">Worksheet_A1.docx</span>
+                          </div>
+                          <button class="btn btn-ghost btn-xs rounded-full">Open</button>
+                        </li>
+                        <li class="flex items-center justify-between">
+                          <div class="flex items-center gap-2">
+                            <span class="badge badge-ghost">MP3</span>
+                            <span class="text-sm font-medium">Pronunciation.mp3</span>
+                          </div>
+                          <button class="btn btn-ghost btn-xs rounded-full">Play</button>
+                        </li>
+                      </ul>
                     </div>
-                  </div>
 
-                  <!-- Role Play -->
-                  <div class="lg:col-span-4">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">🎭 Role Play</h3>
-                          <button class="btn btn-xs btn-primary">Add</button>
-                        </div>
-
-                        <div class="collapse collapse-arrow bg-base-200 border border-base-300">
-                          <input type="checkbox" checked />
-                          <div class="collapse-title font-medium">Greeting practice</div>
-                          <div class="collapse-content text-sm space-y-2">
-                            <p><span class="badge badge-outline">5–7 mins</span></p>
-                            <ol class="list-decimal ml-5">
-                              <li>Pair up</li>
-                              <li>Say hello in Tamil</li>
-                              <li>Swap roles</li>
-                            </ol>
-                          </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow bg-base-200 border border-base-300">
-                          <input type="checkbox" />
-                          <div class="collapse-title font-medium">Letter hunt (classroom)</div>
-                          <div class="collapse-content text-sm">
-                            Use flashcards hidden around class; students act as “detectives”.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Study Plan -->
-                  <div class="lg:col-span-4">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">📘 Study Plan</h3>
-                          <button class="btn btn-xs btn-outline">Edit</button>
-                        </div>
-
-                        <ul class="steps steps-vertical">
-                          <li class="step step-primary">10 mins: Read letters aloud</li>
-                          <li class="step step-primary">10 mins: Trace + write</li>
-                          <li class="step">5 mins: Quick recap</li>
-                        </ul>
-
-                        <div class="card-actions justify-end">
-                          <button class="btn btn-primary btn-sm">Save</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Quiz -->
-                  <div class="lg:col-span-4">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">❓ Quiz</h3>
-                          <button class="btn btn-xs btn-primary">Add</button>
-                        </div>
-
-                        <div class="space-y-3">
-                          <div class="p-3 rounded-lg bg-base-200 border border-base-300">
-                            <p class="font-medium text-sm">1) Pick the correct letter</p>
-                            <div class="flex flex-wrap gap-2 mt-2">
-                              <span class="badge">அ</span>
-                              <span class="badge badge-outline">ஆ</span>
-                              <span class="badge badge-outline">இ</span>
-                            </div>
-                          </div>
-
-                          <div class="p-3 rounded-lg bg-base-200 border border-base-300">
-                            <p class="font-medium text-sm">2) Match sound to letter</p>
-                            <div class="text-sm opacity-70 mt-1">Audio-based (mock)</div>
-                          </div>
-                        </div>
-
-                        <div class="card-actions justify-end">
-                          <button class="btn btn-outline btn-sm">Preview Quiz</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Study Guide -->
-                  <div class="lg:col-span-12">
-                    <div class="card bg-base-100 border border-base-300">
-                      <div class="card-body gap-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="card-title text-base">📄 Study Guide</h3>
-                          <div class="flex gap-2">
-                            <button class="btn btn-xs btn-outline">Generate</button>
-                            <button class="btn btn-xs btn-primary">Save</button>
-                          </div>
-                        </div>
-
-                        <textarea class="textarea textarea-bordered min-h-40"
-                          placeholder="Provide a short guide for parents/students: what to review, tips, examples, common mistakes..."></textarea>
-
-                        <div class="flex flex-wrap gap-2">
-                          <span class="badge badge-ghost">Pronunciation tips</span>
-                          <span class="badge badge-ghost">Stroke order</span>
-                          <span class="badge badge-ghost">Home practice</span>
-                        </div>
-                      </div>
+                    <div class="card-actions justify-end">
+                      <button class="btn btn-outline btn-sm rounded-full">Manage</button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <input type="radio" name="topic_tabs" role="tab" class="tab" aria-label="Topic B" />
-              <div role="tabpanel" class="tab-content pt-5">
-                <div class="alert alert-warning">
-                  <span>Topic B panels would appear here (same layout). This is a static mock.</span>
-                </div>
+              <!-- Learning Outcomes -->
+              <div class="lg:col-span-7">
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <div class="badge badge-secondary badge-outline">Outcomes</div>
+                        <h3 class="font-semibold">Learning Outcomes</h3>
+                      </div>
+                      <button class="btn btn-xs btn-outline rounded-full">AI assist</button>
+                    </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                  <div class="card bg-base-100 border border-base-300">
-                    <div class="card-body">
-                      <h3 class="card-title text-base">📂 Content Files</h3>
-                      <p class="text-sm opacity-70">No files added yet.</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary btn-sm">Add</button>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
+                        <div class="text-xs opacity-70 mb-2">Students can…</div>
+                        <ul class="list-disc ml-5 text-sm space-y-1">
+                          <li>Recognise letters அ, ஆ, இ</li>
+                          <li>Pronounce with correct vowel sound</li>
+                          <li>Write with correct stroke order</li>
+                        </ul>
+                      </div>
+                      <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
+                        <div class="text-xs opacity-70 mb-2">Teacher focus</div>
+                        <ul class="list-disc ml-5 text-sm space-y-1">
+                          <li>Phonics-style repetition</li>
+                          <li>Short drills + fun game</li>
+                          <li>Check handwriting posture</li>
+                        </ul>
                       </div>
                     </div>
-                  </div>
-                  <div class="card bg-base-100 border border-base-300">
-                    <div class="card-body">
-                      <h3 class="card-title text-base">🎯 Learning Outcomes</h3>
-                      <p class="text-sm opacity-70">Add outcomes for this topic.</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-outline btn-sm">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card bg-base-100 border border-base-300">
-                    <div class="card-body">
-                      <h3 class="card-title text-base">❓ Quiz</h3>
-                      <p class="text-sm opacity-70">Create 3–5 questions.</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary btn-sm">Add</button>
-                      </div>
+
+                    <textarea
+                      class="textarea textarea-bordered rounded-2xl min-h-24"
+                      placeholder="Edit outcomes here…"
+                    ></textarea>
+
+                    <div class="card-actions justify-end">
+                      <button class="btn btn-primary btn-sm rounded-full">Save</button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <input type="radio" name="topic_tabs" role="tab" class="tab" aria-label="Topic C" />
-              <div role="tabpanel" class="tab-content pt-5">
-                <div class="alert alert-info">
-                  <span>Topic C placeholder. Add your panels here.</span>
+              <!-- Activity / Plans / Quiz / Guide (nice compact tiles) -->
+              <div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <!-- Role Play -->
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-semibold">🎭 Role Play</h3>
+                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
+                    </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl">
+                      <input type="checkbox" checked />
+                      <div class="collapse-title text-sm font-medium">Greeting practice (5–7 mins)</div>
+                      <div class="collapse-content text-sm">
+                        <ol class="list-decimal ml-5 space-y-1">
+                          <li>Pair up</li>
+                          <li>Say hello in Tamil</li>
+                          <li>Swap roles</li>
+                        </ol>
+                      </div>
+                    </div>
+
+                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl">
+                      <input type="checkbox" />
+                      <div class="collapse-title text-sm font-medium">Letter detective game</div>
+                      <div class="collapse-content text-sm opacity-80">
+                        Hide flashcards; students “find” and read aloud.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Study Plan -->
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-semibold">📘 Study Plan</h3>
+                      <button class="btn btn-xs btn-outline rounded-full">Edit</button>
+                    </div>
+
+                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
+                      <div class="text-xs opacity-70 mb-2">Suggested routine</div>
+                      <ul class="text-sm space-y-2">
+                        <li class="flex items-center justify-between">
+                          <span>Read aloud</span><span class="badge badge-ghost">10m</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                          <span>Trace + write</span><span class="badge badge-ghost">10m</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                          <span>Recap</span><span class="badge badge-ghost">5m</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <button class="btn btn-primary btn-sm rounded-full w-full">Save plan</button>
+                  </div>
+                </div>
+
+                <!-- Quiz -->
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-semibold">❓ Quiz</h3>
+                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
+                    </div>
+
+                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3 space-y-3">
+                      <div>
+                        <div class="text-sm font-medium">1) Pick the correct letter</div>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                          <span class="badge badge-primary">அ</span>
+                          <span class="badge badge-outline">ஆ</span>
+                          <span class="badge badge-outline">இ</span>
+                        </div>
+                      </div>
+                      <div class="divider my-1"></div>
+                      <div>
+                        <div class="text-sm font-medium">2) Match sound to letter</div>
+                        <div class="text-xs opacity-70 mt-1">Audio-based (mock)</div>
+                      </div>
+                    </div>
+
+                    <div class="join w-full">
+                      <button class="btn btn-outline btn-sm join-item w-1/2 rounded-l-full">Preview</button>
+                      <button class="btn btn-primary btn-sm join-item w-1/2 rounded-r-full">Publish</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Study Guide -->
+                <div class="card bg-base-200 border border-base-300 rounded-3xl">
+                  <div class="card-body gap-3">
+                    <div class="flex items-center justify-between">
+                      <h3 class="font-semibold">📄 Study Guide</h3>
+                      <button class="btn btn-xs btn-outline rounded-full">Generate</button>
+                    </div>
+
+                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
+                      <div class="text-xs opacity-70 mb-2">Short guide (mock)</div>
+                      <p class="text-sm">
+                        Practise pronouncing each letter clearly. Encourage your child to trace strokes slowly.
+                        Repeat 3 times daily for better retention.
+                      </p>
+                    </div>
+
+                    <button class="btn btn-primary btn-sm rounded-full w-full">Save guide</button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="divider"></div>
+            <div class="divider my-1"></div>
 
-            <!-- Footer actions -->
-            <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
-              <button class="btn btn-ghost">Cancel</button>
-              <button class="btn btn-outline">Save Draft</button>
-              <button class="btn btn-primary">Publish Week Plan</button>
+            <!-- Bottom actions -->
+            <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="badge badge-ghost">Autosave: Off (mock)</span>
+                <span class="badge badge-ghost">Last edited: just now</span>
+              </div>
+              <div class="flex gap-2 sm:justify-end">
+                <button class="btn btn-ghost rounded-full">Cancel</button>
+                <button class="btn btn-outline rounded-full">Save draft</button>
+                <button class="btn btn-primary rounded-full">Publish week</button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Bottom spacing -->
       <div class="h-10"></div>
     </main>
+
+    <!-- (Optional) You can change theme quickly by editing data-theme on <html>:
+         corporate | light | dark | cupcake | emerald | winter -->
   </body>
 </html>

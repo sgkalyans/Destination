@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="corporate">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teaching Planner (Static Mock)</title>
+    <title>Teaching Planner</title>
 
     <!-- DaisyUI (includes Tailwind utilities in the compiled CSS) -->
     <link
@@ -14,490 +14,106 @@
   </head>
 
   <body class="min-h-screen bg-base-200">
-    <!-- Top Nav -->
-    <header class="sticky top-0 z-50 border-b border-base-300 bg-base-100/90 backdrop-blur">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="navbar px-0">
-          <div class="navbar-start gap-2">
-            <button class="btn btn-ghost btn-square lg:hidden" aria-label="menu">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-            </button>
+    <!-- NAVBAR (as requested) -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl">Teaching Planner</a>
+      </div>
 
-            <div class="flex items-center gap-3">
-              <div class="avatar placeholder">
-                <div class="bg-primary text-primary-content w-10 rounded-2xl">
-                  <span class="font-bold">TP</span>
-                </div>
-              </div>
-              <div class="leading-tight">
-                <div class="text-lg font-semibold">Teaching Planner</div>
-                <div class="text-xs opacity-70">Weekly plan • Topics • Activities</div>
-              </div>
+      <div class="flex gap-2">
+        <input
+          type="text"
+          placeholder="Search"
+          class="input input-bordered w-24 md:w-auto"
+        />
+
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img
+                alt="Avatar"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              />
             </div>
           </div>
 
-          <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal gap-1">
-              <li><a class="active">Plan</a></li>
-              <li><a>Resources</a></li>
-              <li><a>Templates</a></li>
-              <li><a>Settings</a></li>
-            </ul>
-          </div>
-
-          <div class="navbar-end gap-2">
-            <div class="hidden md:flex items-center gap-2">
-              <span class="text-xs opacity-70">Subject</span>
-              <span class="badge badge-primary badge-outline">Tamil • Primary 3</span>
-              <span class="badge badge-ghost">AY 2026</span>
-              <span class="badge badge-ghost">Term 1</span>
-            </div>
-
-            <button class="btn btn-ghost btn-square" aria-label="notifications">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6 6 0 1 0-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 1 1-6 0m6 0H9"/>
-              </svg>
-            </button>
-
-            <div class="dropdown dropdown-end">
-              <div tabindex="0" role="button" class="btn btn-ghost gap-2">
-                <div class="avatar placeholder">
-                  <div class="bg-neutral text-neutral-content w-9 rounded-full">
-                    <span class="text-sm">KS</span>
-                  </div>
-                </div>
-                <span class="hidden sm:inline text-sm font-medium">Kalyan</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-70" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M19 9l-7 7-7-7"/>
-                </svg>
-              </div>
-              <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56">
-                <li><a>Profile</a></li>
-                <li><a>Help</a></li>
-                <li><a class="text-error">Logout</a></li>
-              </ul>
-            </div>
-          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
         </div>
       </div>
-    </header>
+    </div>
 
-    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-      <!-- Hero / Week selector -->
-      <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <div class="lg:col-span-8">
-          <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
-            <div class="card-body gap-5">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                <div>
-                  <div class="breadcrumbs text-sm">
-                    <ul>
-                      <li><a>Home</a></li>
-                      <li><a>Plan</a></li>
-                      <li>Weekly View</li>
-                    </ul>
-                  </div>
-                  <h1 class="text-2xl sm:text-3xl font-semibold mt-2">Weekly Teaching Plan</h1>
-                  <p class="text-sm opacity-70 mt-1">
-                    Choose a week, then switch topic tabs and fill in panels (files, outcomes, activities, quiz, guide).
-                  </p>
-                </div>
+    <!-- BLANK PAGE BODY (starter layout) -->
+    <main class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+      <!-- Page title row -->
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold">Weekly Teaching Plan</h1>
+          <p class="text-sm opacity-70">
+            This is a blank starter page. Next we’ll add: Week dropdown → Topic tabs → Panels.
+          </p>
+        </div>
 
-                <div class="flex gap-2">
-                  <button class="btn btn-outline btn-sm rounded-full">Duplicate week</button>
-                  <button class="btn btn-primary btn-sm rounded-full">New topic</button>
-                </div>
-              </div>
+        <!-- Optional quick actions (empty for now) -->
+        <div class="flex gap-2">
+          <button class="btn btn-outline btn-sm">New</button>
+          <button class="btn btn-primary btn-sm">Save</button>
+        </div>
+      </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
-                <!-- Week dropdown -->
-                <div class="md:col-span-7">
-                  <label class="form-control">
-                    <div class="label">
-                      <span class="label-text font-medium">Select Week</span>
-                      <span class="label-text-alt opacity-70">Static mock</span>
-                    </div>
-                    <select class="select select-bordered rounded-2xl w-full">
-                      <option selected>Week 1 — Introduction to Letters</option>
-                      <option>Week 2 — Word Formation</option>
-                      <option>Week 3 — Sentence Building</option>
-                      <option>Week 4 — Reading Fluency</option>
-                    </select>
-                  </label>
-                </div>
+      <!-- Main blank canvas -->
+      <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
+        <!-- Left content area -->
+        <section class="lg:col-span-8">
+          <div class="card bg-base-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title">Plan Area</h2>
+              <p class="opacity-70 text-sm">
+                Placeholder for Week dropdown and Topic tabs.
+              </p>
 
-                <!-- Commence + meta -->
-                <div class="md:col-span-5">
-                  <div class="grid grid-cols-2 gap-3 h-full">
-                    <div class="card bg-base-200 border border-base-300 rounded-2xl">
-                      <div class="card-body p-4">
-                        <div class="text-xs opacity-70">Commence</div>
-                        <div class="text-lg font-semibold">02 Feb 2026</div>
-                        <div class="text-xs opacity-60">Mon</div>
-                      </div>
-                    </div>
-                    <div class="card bg-base-200 border border-base-300 rounded-2xl">
-                      <div class="card-body p-4">
-                        <div class="text-xs opacity-70">Status</div>
-                        <div class="flex flex-wrap gap-2 mt-1">
-                          <span class="badge badge-success badge-outline">Ready</span>
-                          <span class="badge badge-warning badge-outline">Quiz pending</span>
-                        </div>
-                        <div class="text-xs opacity-60 mt-1">Auto badges later</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Quick stats -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div class="card bg-base-200 border border-base-300 rounded-2xl">
-                  <div class="card-body p-4">
-                    <div class="flex items-center justify-between">
-                      <div>
-                        <div class="text-xs opacity-70">Topics</div>
-                        <div class="text-2xl font-semibold">3</div>
-                      </div>
-                      <div class="badge badge-ghost">Week 1</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card bg-base-200 border border-base-300 rounded-2xl">
-                  <div class="card-body p-4">
-                    <div class="text-xs opacity-70">Content files</div>
-                    <div class="text-2xl font-semibold">5</div>
-                    <div class="text-xs opacity-60">Slides • WS • Audio</div>
-                  </div>
-                </div>
-                <div class="card bg-base-200 border border-base-300 rounded-2xl">
-                  <div class="card-body p-4">
-                    <div class="text-xs opacity-70">Activities</div>
-                    <div class="text-2xl font-semibold">4</div>
-                    <div class="text-xs opacity-60">Role-play • Practice</div>
-                  </div>
+              <!-- Blank placeholder block -->
+              <div class="mt-4 rounded-box border border-dashed border-base-300 bg-base-200 p-8 text-center">
+                <div class="text-sm opacity-70">
+                  Add components here (Week selector, Topic tabs, panels).
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Right: Notes + Checklist -->
+        <!-- Right sidebar -->
         <aside class="lg:col-span-4">
-          <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
-            <div class="card-body gap-4">
-              <div class="flex items-start justify-between">
-                <div>
-                  <h2 class="text-lg font-semibold">Teacher Notes</h2>
-                  <p class="text-sm opacity-70">Personal reminders for this week</p>
+          <div class="card bg-base-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title">Sidebar</h2>
+              <p class="opacity-70 text-sm">
+                Placeholder for notes / checklist / quick info.
+              </p>
+
+              <div class="mt-4 rounded-box border border-dashed border-base-300 bg-base-200 p-8 text-center">
+                <div class="text-sm opacity-70">
+                  Add notes/checklist widgets here.
                 </div>
-                <span class="badge badge-ghost">Private</span>
-              </div>
-
-              <textarea
-                class="textarea textarea-bordered rounded-2xl min-h-28"
-                placeholder="E.g., Slow learners: extra tracing sheets. Pronunciation drill first 5 mins."
-              ></textarea>
-
-              <div class="divider my-1"></div>
-
-              <div class="flex items-center justify-between">
-                <div class="text-sm font-medium">Week checklist</div>
-                <button class="btn btn-ghost btn-xs rounded-full">Reset</button>
-              </div>
-
-              <div class="space-y-2">
-                <label class="label cursor-pointer justify-start gap-3">
-                  <input type="checkbox" class="checkbox checkbox-primary" checked />
-                  <span class="label-text">Learning outcomes added</span>
-                </label>
-                <label class="label cursor-pointer justify-start gap-3">
-                  <input type="checkbox" class="checkbox checkbox-primary" />
-                  <span class="label-text">Quiz prepared</span>
-                </label>
-                <label class="label cursor-pointer justify-start gap-3">
-                  <input type="checkbox" class="checkbox checkbox-primary" checked />
-                  <span class="label-text">Role play planned</span>
-                </label>
-                <label class="label cursor-pointer justify-start gap-3">
-                  <input type="checkbox" class="checkbox checkbox-primary" />
-                  <span class="label-text">Study guide ready</span>
-                </label>
-              </div>
-
-              <div class="card-actions justify-end">
-                <button class="btn btn-outline btn-sm rounded-full">Save notes</button>
-                <button class="btn btn-primary btn-sm rounded-full">Publish</button>
               </div>
             </div>
           </div>
         </aside>
-      </section>
+      </div>
 
-      <!-- Topics + Panels -->
-      <section class="mt-6">
-        <div class="card bg-base-100 shadow-lg border border-base-300 rounded-3xl">
-          <div class="card-body gap-5">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <h2 class="text-xl font-semibold">Topics</h2>
-                <p class="text-sm opacity-70">Switch topic tab to edit its learning materials</p>
-              </div>
-
-              <div class="join">
-                <button class="btn btn-sm join-item rounded-l-full">Prev</button>
-                <button class="btn btn-sm join-item">Next</button>
-                <button class="btn btn-sm join-item rounded-r-full btn-primary">Add topic</button>
-              </div>
-            </div>
-
-            <!-- Topic Tabs (pill style) -->
-            <div class="flex flex-wrap gap-2">
-              <input type="radio" name="topic" id="t1" class="hidden peer/t1" checked />
-              <label for="t1" class="btn btn-sm rounded-full btn-primary">Topic A • Letters அ ஆ இ</label>
-
-              <input type="radio" name="topic" id="t2" class="hidden peer/t2" />
-              <label for="t2" class="btn btn-sm rounded-full btn-outline">Topic B • Writing practice</label>
-
-              <input type="radio" name="topic" id="t3" class="hidden peer/t3" />
-              <label for="t3" class="btn btn-sm rounded-full btn-outline">Topic C • Pronunciation</label>
-            </div>
-
-            <!-- Panels Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-              <!-- Content Files -->
-              <div class="lg:col-span-5">
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-2">
-                        <div class="badge badge-primary badge-outline">Files</div>
-                        <h3 class="font-semibold">Content Files</h3>
-                      </div>
-                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
-                    </div>
-
-                    <input type="file" class="file-input file-input-bordered w-full rounded-2xl" />
-
-                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
-                      <div class="text-xs opacity-70 mb-2">Uploaded (mock)</div>
-                      <ul class="space-y-2">
-                        <li class="flex items-center justify-between">
-                          <div class="flex items-center gap-2">
-                            <span class="badge badge-ghost">PDF</span>
-                            <span class="text-sm font-medium">Slides_TopicA.pdf</span>
-                          </div>
-                          <button class="btn btn-ghost btn-xs rounded-full">Open</button>
-                        </li>
-                        <li class="flex items-center justify-between">
-                          <div class="flex items-center gap-2">
-                            <span class="badge badge-ghost">DOCX</span>
-                            <span class="text-sm font-medium">Worksheet_A1.docx</span>
-                          </div>
-                          <button class="btn btn-ghost btn-xs rounded-full">Open</button>
-                        </li>
-                        <li class="flex items-center justify-between">
-                          <div class="flex items-center gap-2">
-                            <span class="badge badge-ghost">MP3</span>
-                            <span class="text-sm font-medium">Pronunciation.mp3</span>
-                          </div>
-                          <button class="btn btn-ghost btn-xs rounded-full">Play</button>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div class="card-actions justify-end">
-                      <button class="btn btn-outline btn-sm rounded-full">Manage</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Learning Outcomes -->
-              <div class="lg:col-span-7">
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-2">
-                        <div class="badge badge-secondary badge-outline">Outcomes</div>
-                        <h3 class="font-semibold">Learning Outcomes</h3>
-                      </div>
-                      <button class="btn btn-xs btn-outline rounded-full">AI assist</button>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
-                        <div class="text-xs opacity-70 mb-2">Students can…</div>
-                        <ul class="list-disc ml-5 text-sm space-y-1">
-                          <li>Recognise letters அ, ஆ, இ</li>
-                          <li>Pronounce with correct vowel sound</li>
-                          <li>Write with correct stroke order</li>
-                        </ul>
-                      </div>
-                      <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
-                        <div class="text-xs opacity-70 mb-2">Teacher focus</div>
-                        <ul class="list-disc ml-5 text-sm space-y-1">
-                          <li>Phonics-style repetition</li>
-                          <li>Short drills + fun game</li>
-                          <li>Check handwriting posture</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <textarea
-                      class="textarea textarea-bordered rounded-2xl min-h-24"
-                      placeholder="Edit outcomes here…"
-                    ></textarea>
-
-                    <div class="card-actions justify-end">
-                      <button class="btn btn-primary btn-sm rounded-full">Save</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Activity / Plans / Quiz / Guide (nice compact tiles) -->
-              <div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                <!-- Role Play -->
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <h3 class="font-semibold">🎭 Role Play</h3>
-                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
-                    </div>
-
-                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl">
-                      <input type="checkbox" checked />
-                      <div class="collapse-title text-sm font-medium">Greeting practice (5–7 mins)</div>
-                      <div class="collapse-content text-sm">
-                        <ol class="list-decimal ml-5 space-y-1">
-                          <li>Pair up</li>
-                          <li>Say hello in Tamil</li>
-                          <li>Swap roles</li>
-                        </ol>
-                      </div>
-                    </div>
-
-                    <div class="collapse collapse-arrow bg-base-100 border border-base-300 rounded-2xl">
-                      <input type="checkbox" />
-                      <div class="collapse-title text-sm font-medium">Letter detective game</div>
-                      <div class="collapse-content text-sm opacity-80">
-                        Hide flashcards; students “find” and read aloud.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Study Plan -->
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <h3 class="font-semibold">📘 Study Plan</h3>
-                      <button class="btn btn-xs btn-outline rounded-full">Edit</button>
-                    </div>
-
-                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
-                      <div class="text-xs opacity-70 mb-2">Suggested routine</div>
-                      <ul class="text-sm space-y-2">
-                        <li class="flex items-center justify-between">
-                          <span>Read aloud</span><span class="badge badge-ghost">10m</span>
-                        </li>
-                        <li class="flex items-center justify-between">
-                          <span>Trace + write</span><span class="badge badge-ghost">10m</span>
-                        </li>
-                        <li class="flex items-center justify-between">
-                          <span>Recap</span><span class="badge badge-ghost">5m</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <button class="btn btn-primary btn-sm rounded-full w-full">Save plan</button>
-                  </div>
-                </div>
-
-                <!-- Quiz -->
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <h3 class="font-semibold">❓ Quiz</h3>
-                      <button class="btn btn-xs btn-primary rounded-full">Add</button>
-                    </div>
-
-                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3 space-y-3">
-                      <div>
-                        <div class="text-sm font-medium">1) Pick the correct letter</div>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                          <span class="badge badge-primary">அ</span>
-                          <span class="badge badge-outline">ஆ</span>
-                          <span class="badge badge-outline">இ</span>
-                        </div>
-                      </div>
-                      <div class="divider my-1"></div>
-                      <div>
-                        <div class="text-sm font-medium">2) Match sound to letter</div>
-                        <div class="text-xs opacity-70 mt-1">Audio-based (mock)</div>
-                      </div>
-                    </div>
-
-                    <div class="join w-full">
-                      <button class="btn btn-outline btn-sm join-item w-1/2 rounded-l-full">Preview</button>
-                      <button class="btn btn-primary btn-sm join-item w-1/2 rounded-r-full">Publish</button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Study Guide -->
-                <div class="card bg-base-200 border border-base-300 rounded-3xl">
-                  <div class="card-body gap-3">
-                    <div class="flex items-center justify-between">
-                      <h3 class="font-semibold">📄 Study Guide</h3>
-                      <button class="btn btn-xs btn-outline rounded-full">Generate</button>
-                    </div>
-
-                    <div class="bg-base-100 border border-base-300 rounded-2xl p-3">
-                      <div class="text-xs opacity-70 mb-2">Short guide (mock)</div>
-                      <p class="text-sm">
-                        Practise pronouncing each letter clearly. Encourage your child to trace strokes slowly.
-                        Repeat 3 times daily for better retention.
-                      </p>
-                    </div>
-
-                    <button class="btn btn-primary btn-sm rounded-full w-full">Save guide</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="divider my-1"></div>
-
-            <!-- Bottom actions -->
-            <div class="flex flex-col sm:flex-row sm:justify-between gap-3">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="badge badge-ghost">Autosave: Off (mock)</span>
-                <span class="badge badge-ghost">Last edited: just now</span>
-              </div>
-              <div class="flex gap-2 sm:justify-end">
-                <button class="btn btn-ghost rounded-full">Cancel</button>
-                <button class="btn btn-outline rounded-full">Save draft</button>
-                <button class="btn btn-primary rounded-full">Publish week</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- Footer spacing -->
       <div class="h-10"></div>
     </main>
-
-    <!-- (Optional) You can change theme quickly by editing data-theme on <html>:
-         corporate | light | dark | cupcake | emerald | winter -->
   </body>
 </html>

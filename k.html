@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prototype • Learning Platform</title>
+  <title>UI Prototype • Subject → Week → Topic Workspace</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -13,22 +13,15 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between gap-3">
         <div class="flex items-center gap-3">
-          <!-- Replace with your Indian.SG logo if you want -->
           <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-semibold">LP</div>
           <div>
             <div class="text-sm font-semibold leading-4">Personalised Learning Platform</div>
-            <div class="text-xs text-slate-500 leading-4">Teacher Workspace • Prototype</div>
+            <div class="text-xs text-slate-500 leading-4">Prototype • Subject → Week → Topic</div>
           </div>
         </div>
 
         <div class="flex items-center gap-2">
-          <div class="hidden md:flex items-center gap-2 rounded-xl border bg-white px-3 py-2">
-            <svg class="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m21 21-4.3-4.3"></path><circle cx="11" cy="11" r="7"></circle>
-            </svg>
-            <input class="w-56 text-sm outline-none placeholder:text-slate-400" placeholder="Search lesson, topic, quiz..." />
-          </div>
-          <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Export</button>
+          <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Preview</button>
           <button class="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800">Publish</button>
         </div>
       </div>
@@ -36,244 +29,736 @@
   </header>
 
   <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-    <!-- Layout -->
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
 
-      <!-- Left Sidebar -->
-      <aside class="lg:col-span-3">
+      <!-- Left / Controls -->
+      <aside class="lg:col-span-4 space-y-6">
+        <!-- Selection Panel -->
         <div class="rounded-2xl border bg-white p-4 shadow-sm">
           <div class="flex items-center justify-between">
-            <div class="text-sm font-semibold">Subjects</div>
-            <button class="text-xs rounded-lg border px-2 py-1 hover:bg-slate-50">+ Add</button>
+            <div class="text-sm font-semibold">Start flow</div>
+            <span class="text-xs text-slate-500">Change → auto-load</span>
           </div>
 
-          <div class="mt-3 space-y-2">
-            <button class="w-full rounded-xl border bg-slate-900 px-3 py-2 text-left text-sm text-white">
-              Network Fundamentals (Prototype)
-              <div class="text-xs text-slate-300 mt-0.5">3 weeks • 9 topics</div>
-            </button>
-
-            <button class="w-full rounded-xl border bg-white px-3 py-2 text-left text-sm hover:bg-slate-50">
-              Software Development (Draft)
-              <div class="text-xs text-slate-500 mt-0.5">Not configured</div>
-            </button>
-
-            <button class="w-full rounded-xl border bg-white px-3 py-2 text-left text-sm hover:bg-slate-50">
-              Cybersecurity Basics (Draft)
-              <div class="text-xs text-slate-500 mt-0.5">Not configured</div>
-            </button>
-          </div>
-
-          <div class="mt-6 rounded-2xl bg-slate-50 p-3 border">
-            <div class="text-xs font-semibold text-slate-700">Quick actions</div>
-            <div class="mt-2 grid grid-cols-2 gap-2">
-              <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">New Week</button>
-              <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">New Quiz</button>
-              <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">Upload File</button>
-              <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">AI Assist</button>
+          <div class="mt-4 space-y-4">
+            <!-- Subject -->
+            <div>
+              <label class="text-xs font-semibold text-slate-700">Subject</label>
+              <select id="subjectSelect" class="mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-200">
+              </select>
+              <div class="mt-2 text-xs text-slate-500">Selecting a subject loads its weeks.</div>
             </div>
+
+            <!-- Week + Manage -->
+            <div>
+              <div class="flex items-center justify-between">
+                <label class="text-xs font-semibold text-slate-700">Week</label>
+                <div class="flex gap-2">
+                  <button id="weekAddBtn" class="rounded-lg border bg-white px-2 py-1 text-xs hover:bg-slate-50">+ Add</button>
+                  <button id="weekRenameBtn" class="rounded-lg border bg-white px-2 py-1 text-xs hover:bg-slate-50">Rename</button>
+                  <button id="weekRemoveBtn" class="rounded-lg border bg-white px-2 py-1 text-xs hover:bg-slate-50">Remove</button>
+                </div>
+              </div>
+              <select id="weekSelect" class="mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-200">
+              </select>
+              <div class="mt-2 text-xs text-slate-500">Managing weeks updates topics automatically.</div>
+            </div>
+
+            <!-- Topic -->
+            <div>
+              <div class="flex items-center justify-between">
+                <label class="text-xs font-semibold text-slate-700">Topics (for selected week)</label>
+                <button id="topicAddBtn" class="rounded-lg border bg-white px-2 py-1 text-xs hover:bg-slate-50">+ Add Topic</button>
+              </div>
+              <div id="topicList" class="mt-2 space-y-2"></div>
+              <div class="mt-2 text-xs text-slate-500">Selecting a topic loads the workspace on the right.</div>
+            </div>
+          </div>
+
+          <div id="statusBar" class="mt-4 rounded-xl border bg-slate-50 p-3 text-xs text-slate-600">
+            Ready.
           </div>
         </div>
 
-        <div class="mt-6 rounded-2xl border bg-white p-4 shadow-sm">
-          <div class="text-sm font-semibold">Class</div>
-          <div class="mt-2 text-xs text-slate-500">Diploma • Year 1 • Group A</div>
-
-          <div class="mt-4 space-y-2">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-500">Published content</span>
-              <span class="font-semibold">7 items</span>
+        <!-- Mini summary card -->
+        <div class="rounded-2xl border bg-white p-4 shadow-sm">
+          <div class="text-sm font-semibold">Current selection</div>
+          <div class="mt-2 grid grid-cols-1 gap-2 text-xs">
+            <div class="rounded-xl border bg-slate-50 p-3">
+              <div class="text-slate-500">Subject</div>
+              <div id="currentSubject" class="mt-0.5 font-semibold">—</div>
             </div>
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-500">Pending review</span>
-              <span class="font-semibold">2 items</span>
+            <div class="rounded-xl border bg-slate-50 p-3">
+              <div class="text-slate-500">Week</div>
+              <div id="currentWeek" class="mt-0.5 font-semibold">—</div>
             </div>
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-slate-500">Last updated</span>
-              <span class="font-semibold">Today</span>
+            <div class="rounded-xl border bg-slate-50 p-3">
+              <div class="text-slate-500">Topic</div>
+              <div id="currentTopic" class="mt-0.5 font-semibold">—</div>
             </div>
           </div>
         </div>
       </aside>
 
-      <!-- Main Content -->
-      <section class="lg:col-span-9 space-y-6">
-
-        <!-- Header / Breadcrumb -->
+      <!-- Right / Workspace -->
+      <section class="lg:col-span-8 space-y-6">
+        <!-- Workspace Header -->
         <div class="rounded-2xl border bg-white p-5 shadow-sm">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div class="text-xs text-slate-500">Teacher Workspace / Network Fundamentals</div>
-              <h1 class="mt-1 text-xl font-semibold">Week 1 • Foundations of Networking</h1>
-              <p class="mt-1 text-sm text-slate-600">
-                Build a structured week plan with topics, resources, quizzes, role-play and study plan.
+              <div class="text-xs text-slate-500">Topic Workspace</div>
+              <h1 id="workspaceTitle" class="mt-1 text-xl font-semibold">Select a topic</h1>
+              <p id="workspaceSub" class="mt-1 text-sm text-slate-600">
+                Choose subject → week → topic to load content and tools.
               </p>
             </div>
             <div class="flex items-center gap-2">
-              <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Preview</button>
-              <button class="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800">AI Generate</button>
-            </div>
-          </div>
-
-          <!-- Weeks -->
-          <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <div class="rounded-2xl border bg-slate-900 p-4 text-white">
-              <div class="text-xs text-slate-300">Selected</div>
-              <div class="mt-1 font-semibold">Week 1</div>
-              <div class="mt-1 text-sm text-slate-200">Basics, OSI model, devices</div>
-            </div>
-            <div class="rounded-2xl border bg-white p-4 hover:bg-slate-50">
-              <div class="text-xs text-slate-500">Week 2</div>
-              <div class="mt-1 font-semibold">IP Addressing</div>
-              <div class="mt-1 text-sm text-slate-600">Subnetting, IPv4/IPv6</div>
-            </div>
-            <div class="rounded-2xl border bg-white p-4 hover:bg-slate-50">
-              <div class="text-xs text-slate-500">Week 3</div>
-              <div class="mt-1 font-semibold">Switching & Routing</div>
-              <div class="mt-1 text-sm text-slate-600">VLAN, routing concepts</div>
+              <button id="saveBtn" class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Save</button>
+              <button id="aiGenBtn" class="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800">AI Assist</button>
             </div>
           </div>
         </div>
 
-        <!-- Topics + Tabs -->
+        <!-- Tabs -->
         <div class="rounded-2xl border bg-white shadow-sm">
-          <!-- Topic selector -->
           <div class="border-b p-4">
-            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div class="text-sm font-semibold">Topics (Week 1)</div>
-                <div class="text-xs text-slate-500">Select a topic to manage learning items</div>
-              </div>
-              <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">+ Add Topic</button>
-            </div>
-
-            <div class="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
-              <div class="rounded-2xl border bg-slate-50 p-4">
-                <div class="text-xs text-slate-500">Topic 1</div>
-                <div class="mt-1 font-semibold">What is a Network?</div>
-                <div class="mt-2 flex gap-2 text-xs">
-                  <span class="rounded-full bg-white border px-2 py-1">2 resources</span>
-                  <span class="rounded-full bg-white border px-2 py-1">1 quiz</span>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border bg-slate-900 p-4 text-white">
-                <div class="text-xs text-slate-300">Selected • Topic 2</div>
-                <div class="mt-1 font-semibold">OSI Model (7 Layers)</div>
-                <div class="mt-2 flex gap-2 text-xs">
-                  <span class="rounded-full bg-slate-800 border border-slate-700 px-2 py-1">3 resources</span>
-                  <span class="rounded-full bg-slate-800 border border-slate-700 px-2 py-1">1 role-play</span>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border bg-slate-50 p-4">
-                <div class="text-xs text-slate-500">Topic 3</div>
-                <div class="mt-1 font-semibold">Network Devices</div>
-                <div class="mt-2 flex gap-2 text-xs">
-                  <span class="rounded-full bg-white border px-2 py-1">1 lab</span>
-                  <span class="rounded-full bg-white border px-2 py-1">1 study plan</span>
-                </div>
-              </div>
+            <div class="flex flex-wrap gap-2">
+              <button data-tab="files" class="tabBtn rounded-full bg-slate-900 px-4 py-2 text-sm text-white">Files</button>
+              <button data-tab="outcomes" class="tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Learning Outcomes</button>
+              <button data-tab="quiz" class="tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">AI Quiz</button>
+              <button data-tab="roleplay" class="tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Role-play</button>
+              <button data-tab="summary" class="tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Summaries</button>
+              <button data-tab="flash" class="tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Flashcards</button>
             </div>
           </div>
 
-          <!-- Tabs -->
           <div class="p-4">
-            <div class="flex flex-wrap gap-2">
-              <button class="rounded-full bg-slate-900 px-4 py-2 text-sm text-white">Resources</button>
-              <button class="rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Quiz</button>
-              <button class="rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Role-play</button>
-              <button class="rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Study plan</button>
-              <button class="rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50">Files</button>
-            </div>
-
-            <!-- Grid content -->
-            <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
-              <!-- Resource cards -->
-              <div class="rounded-2xl border bg-slate-50 p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <div class="text-xs text-slate-500">Reading</div>
-                    <div class="mt-1 font-semibold">OSI Overview (Short Notes)</div>
-                    <div class="mt-1 text-sm text-slate-600">Simple explanation + examples for each layer.</div>
-                  </div>
-                  <span class="rounded-lg border bg-white px-2 py-1 text-xs">PDF</span>
-                </div>
-                <div class="mt-4 flex gap-2">
-                  <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">View</button>
-                  <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">Replace</button>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border bg-slate-50 p-4">
-                <div class="flex items-start justify-between gap-2">
-                  <div>
-                    <div class="text-xs text-slate-500">Video</div>
-                    <div class="mt-1 font-semibold">OSI Model Explained (5–7 mins)</div>
-                    <div class="mt-1 text-sm text-slate-600">Quick recap before quiz.</div>
-                  </div>
-                  <span class="rounded-lg border bg-white px-2 py-1 text-xs">Link</span>
-                </div>
-                <div class="mt-4 flex gap-2">
-                  <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">Open</button>
-                  <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50">Edit</button>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border bg-white p-4">
-                <div class="text-xs text-slate-500">AI Assist</div>
-                <div class="mt-1 font-semibold">Generate resources</div>
-                <div class="mt-1 text-sm text-slate-600">
-                  Create short notes, examples, and practice questions for OSI layers.
-                </div>
-                <button class="mt-4 w-full rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800">
-                  Generate with AI
-                </button>
-                <div class="mt-2 text-xs text-slate-500">
-                  Tip: You can lock tone, length and difficulty.
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom panel -->
-            <div class="mt-4 rounded-2xl border bg-white p-4">
-              <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <!-- Files -->
+            <div id="tab-files" class="tabPanel">
+              <div class="flex items-center justify-between">
                 <div>
-                  <div class="text-sm font-semibold">Topic settings</div>
-                  <div class="text-xs text-slate-500">Control visibility, prerequisites, and timing</div>
+                  <div class="text-sm font-semibold">File content upload & management</div>
+                  <div class="text-xs text-slate-500">Prototype: add/remove items (no real upload)</div>
                 </div>
-                <div class="flex gap-2">
-                  <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Lock</button>
-                  <button class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">Duplicate</button>
-                  <button class="rounded-xl bg-slate-900 px-3 py-2 text-sm text-white hover:bg-slate-800">Save changes</button>
-                </div>
+                <button id="fileAddBtn" class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">+ Add file</button>
               </div>
 
-              <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
-                <div class="rounded-2xl bg-slate-50 border p-3">
-                  <div class="text-xs text-slate-500">Visibility</div>
-                  <div class="mt-1 text-sm font-semibold">Draft</div>
+              <div id="fileList" class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2"></div>
+            </div>
+
+            <!-- Outcomes -->
+            <div id="tab-outcomes" class="tabPanel hidden">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-semibold">Learning outcomes setup</div>
+                  <div class="text-xs text-slate-500">Define what students should achieve for this topic</div>
                 </div>
-                <div class="rounded-2xl bg-slate-50 border p-3">
-                  <div class="text-xs text-slate-500">Estimated time</div>
-                  <div class="mt-1 text-sm font-semibold">20–25 mins</div>
+                <button id="outcomeAddBtn" class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">+ Add outcome</button>
+              </div>
+
+              <div id="outcomeList" class="mt-4 space-y-2"></div>
+            </div>
+
+            <!-- Quiz -->
+            <div id="tab-quiz" class="tabPanel hidden">
+              <div class="rounded-2xl border bg-slate-50 p-4">
+                <div class="text-sm font-semibold">Generate quiz using AI (mock)</div>
+                <div class="mt-1 text-xs text-slate-500">In real app, this will call Azure OpenAI / your agent.</div>
+
+                <div class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
+                  <div>
+                    <label class="text-xs font-semibold text-slate-700">Difficulty</label>
+                    <select id="quizDifficulty" class="mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm">
+                      <option>Easy</option><option selected>Medium</option><option>Hard</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-slate-700">Question count</label>
+                    <select id="quizCount" class="mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm">
+                      <option>5</option><option selected>10</option><option>15</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-slate-700">Type</label>
+                    <select id="quizType" class="mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm">
+                      <option selected>MCQ</option><option>Short answer</option><option>Mixed</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="rounded-2xl bg-slate-50 border p-3">
-                  <div class="text-xs text-slate-500">Prerequisite</div>
-                  <div class="mt-1 text-sm font-semibold">Topic 1 (optional)</div>
+
+                <button id="quizGenBtn" class="mt-4 rounded-xl bg-slate-900 px-4 py-2 text-sm text-white hover:bg-slate-800">
+                  Generate quiz (demo)
+                </button>
+
+                <div class="mt-4 rounded-2xl border bg-white p-4">
+                  <div class="text-xs font-semibold text-slate-700">Generated output</div>
+                  <pre id="quizOutput" class="mt-2 overflow-auto text-xs text-slate-700 whitespace-pre-wrap">No quiz generated yet.</pre>
                 </div>
               </div>
+            </div>
+
+            <!-- Role-play -->
+            <div id="tab-roleplay" class="tabPanel hidden">
+              <div class="text-sm font-semibold">Role-play setup</div>
+              <div class="mt-1 text-xs text-slate-500">Example: student as “Network Engineer”, teacher as “Client”.</div>
+              <textarea id="roleplayText" class="mt-3 w-full rounded-2xl border bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-slate-200" rows="8"
+                placeholder="Describe the role-play scenario, roles, rules, and scoring..."></textarea>
+            </div>
+
+            <!-- Summaries -->
+            <div id="tab-summary" class="tabPanel hidden">
+              <div class="text-sm font-semibold">Summary content</div>
+              <div class="mt-1 text-xs text-slate-500">Short recap students can read quickly before quiz.</div>
+              <textarea id="summaryText" class="mt-3 w-full rounded-2xl border bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-slate-200" rows="8"
+                placeholder="Write the summary for this topic..."></textarea>
+            </div>
+
+            <!-- Flashcards -->
+            <div id="tab-flash" class="tabPanel hidden">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-semibold">Flashcards</div>
+                  <div class="text-xs text-slate-500">Add Q/A pairs for quick revision</div>
+                </div>
+                <button id="flashAddBtn" class="rounded-xl border bg-white px-3 py-2 text-sm hover:bg-slate-50">+ Add card</button>
+              </div>
+              <div id="flashList" class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2"></div>
             </div>
 
           </div>
         </div>
 
-        <!-- Footer note -->
         <div class="text-xs text-slate-500">
-          Prototype only — no JavaScript yet. If you want, I can add click interactions (tabs, select week/topic) using tiny JS or Alpine.js.
+          Prototype behavior: all data is in-memory JS. Refresh will reset. This is intentional for UI prototyping.
         </div>
       </section>
     </div>
   </main>
+
+  <script>
+    // -----------------------
+    // Demo data model (in-memory)
+    // -----------------------
+    const data = {
+      subjects: [
+        {
+          id: "net",
+          name: "Network Fundamentals",
+          weeks: [
+            {
+              id: "w1",
+              name: "Week 1 • Foundations",
+              topics: [
+                topic("t1", "What is a Network?"),
+                topic("t2", "OSI Model (7 Layers)"),
+                topic("t3", "Network Devices")
+              ]
+            },
+            {
+              id: "w2",
+              name: "Week 2 • IP Addressing",
+              topics: [
+                topic("t4", "IPv4 Addressing Basics"),
+                topic("t5", "Subnetting Fundamentals"),
+                topic("t6", "IPv6 Overview")
+              ]
+            },
+            {
+              id: "w3",
+              name: "Week 3 • Switching & Routing",
+              topics: [
+                topic("t7", "Switching Concepts"),
+                topic("t8", "VLAN Basics"),
+                topic("t9", "Routing Concepts")
+              ]
+            }
+          ]
+        },
+        {
+          id: "swd",
+          name: "Software Development (Draft)",
+          weeks: [
+            { id: "sw1", name: "Week 1 • Setup & Git", topics: [ topic("swt1","Dev tools"), topic("swt2","Git basics"), topic("swt3","Branching workflow") ] }
+          ]
+        }
+      ]
+    };
+
+    function topic(id, name) {
+      return {
+        id, name,
+        files: [
+          { id: uid(), title: "Lecture notes", type: "PDF" }
+        ],
+        outcomes: [
+          "Explain key concepts using simple examples."
+        ],
+        roleplay: "",
+        summary: "",
+        flashcards: [
+          { id: uid(), q: "Define a network.", a: "A group of connected devices that can share data/resources." }
+        ]
+      };
+    }
+
+    function uid() {
+      return Math.random().toString(16).slice(2) + Date.now().toString(16);
+    }
+
+    // -----------------------
+    // UI State
+    // -----------------------
+    const state = {
+      subjectId: null,
+      weekId: null,
+      topicId: null,
+      activeTab: "files"
+    };
+
+    // -----------------------
+    // DOM refs
+    // -----------------------
+    const subjectSelect = document.getElementById("subjectSelect");
+    const weekSelect = document.getElementById("weekSelect");
+    const topicList = document.getElementById("topicList");
+    const statusBar = document.getElementById("statusBar");
+
+    const currentSubject = document.getElementById("currentSubject");
+    const currentWeek = document.getElementById("currentWeek");
+    const currentTopic = document.getElementById("currentTopic");
+
+    const workspaceTitle = document.getElementById("workspaceTitle");
+    const workspaceSub = document.getElementById("workspaceSub");
+
+    // Tab buttons/panels
+    const tabBtns = Array.from(document.querySelectorAll(".tabBtn"));
+    const tabPanels = {
+      files: document.getElementById("tab-files"),
+      outcomes: document.getElementById("tab-outcomes"),
+      quiz: document.getElementById("tab-quiz"),
+      roleplay: document.getElementById("tab-roleplay"),
+      summary: document.getElementById("tab-summary"),
+      flash: document.getElementById("tab-flash")
+    };
+
+    // Topic panels controls
+    const fileList = document.getElementById("fileList");
+    const outcomeList = document.getElementById("outcomeList");
+    const roleplayText = document.getElementById("roleplayText");
+    const summaryText = document.getElementById("summaryText");
+    const flashList = document.getElementById("flashList");
+
+    // Buttons
+    document.getElementById("weekAddBtn").addEventListener("click", onAddWeek);
+    document.getElementById("weekRenameBtn").addEventListener("click", onRenameWeek);
+    document.getElementById("weekRemoveBtn").addEventListener("click", onRemoveWeek);
+    document.getElementById("topicAddBtn").addEventListener("click", onAddTopic);
+
+    document.getElementById("fileAddBtn").addEventListener("click", onAddFile);
+    document.getElementById("outcomeAddBtn").addEventListener("click", onAddOutcome);
+    document.getElementById("flashAddBtn").addEventListener("click", onAddFlashcard);
+
+    document.getElementById("quizGenBtn").addEventListener("click", onGenerateQuizDemo);
+    document.getElementById("saveBtn").addEventListener("click", () => toast("Saved (demo)."));
+    document.getElementById("aiGenBtn").addEventListener("click", () => toast("AI Assist (demo). Choose AI Quiz tab for a sample."));
+
+    subjectSelect.addEventListener("change", () => {
+      state.subjectId = subjectSelect.value;
+      // reset week/topic
+      const subj = getSubject();
+      state.weekId = subj.weeks[0]?.id ?? null;
+      state.topicId = subj.weeks[0]?.topics[0]?.id ?? null;
+      toast("Subject changed → weeks & topics loaded.");
+      renderAll();
+    });
+
+    weekSelect.addEventListener("change", () => {
+      state.weekId = weekSelect.value;
+      const wk = getWeek();
+      state.topicId = wk?.topics[0]?.id ?? null;
+      toast("Week changed → topics loaded.");
+      renderAll();
+    });
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.activeTab = btn.dataset.tab;
+        renderTabs();
+      });
+    });
+
+    // Textareas update the topic model live
+    roleplayText.addEventListener("input", () => {
+      const t = getTopic();
+      if (!t) return;
+      t.roleplay = roleplayText.value;
+    });
+    summaryText.addEventListener("input", () => {
+      const t = getTopic();
+      if (!t) return;
+      t.summary = summaryText.value;
+    });
+
+    // -----------------------
+    // Helpers (model getters)
+    // -----------------------
+    function getSubject() {
+      return data.subjects.find(s => s.id === state.subjectId);
+    }
+    function getWeek() {
+      const s = getSubject();
+      return s?.weeks.find(w => w.id === state.weekId);
+    }
+    function getTopic() {
+      const w = getWeek();
+      return w?.topics.find(t => t.id === state.topicId);
+    }
+
+    // -----------------------
+    // Render
+    // -----------------------
+    function renderAll() {
+      renderHeaderSelection();
+      renderWeeks();
+      renderTopics();
+      renderWorkspace();
+      renderTabs();
+    }
+
+    function renderHeaderSelection() {
+      const s = getSubject();
+      const w = getWeek();
+      const t = getTopic();
+      currentSubject.textContent = s?.name ?? "—";
+      currentWeek.textContent = w?.name ?? "—";
+      currentTopic.textContent = t?.name ?? "—";
+    }
+
+    function renderSubjects() {
+      subjectSelect.innerHTML = data.subjects.map(s =>
+        `<option value="${s.id}">${escapeHtml(s.name)}</option>`
+      ).join("");
+      if (!state.subjectId) state.subjectId = data.subjects[0]?.id ?? null;
+      subjectSelect.value = state.subjectId;
+    }
+
+    function renderWeeks() {
+      const s = getSubject();
+      weekSelect.innerHTML = (s?.weeks ?? []).map(w =>
+        `<option value="${w.id}">${escapeHtml(w.name)}</option>`
+      ).join("");
+
+      if (!state.weekId) state.weekId = s?.weeks[0]?.id ?? null;
+      // If selected week disappeared, fallback
+      if (state.weekId && !s?.weeks.find(w => w.id === state.weekId)) {
+        state.weekId = s?.weeks[0]?.id ?? null;
+      }
+      weekSelect.value = state.weekId ?? "";
+    }
+
+    function renderTopics() {
+      const w = getWeek();
+      const topics = w?.topics ?? [];
+
+      if (!state.topicId) state.topicId = topics[0]?.id ?? null;
+      if (state.topicId && !topics.find(t => t.id === state.topicId)) {
+        state.topicId = topics[0]?.id ?? null;
+      }
+
+      topicList.innerHTML = topics.map(t => {
+        const selected = t.id === state.topicId;
+        return `
+          <button
+            class="w-full rounded-2xl border p-3 text-left hover:bg-slate-50 ${selected ? "bg-slate-900 text-white border-slate-900" : "bg-white"}"
+            onclick="selectTopic('${t.id}')"
+          >
+            <div class="text-xs ${selected ? "text-slate-300" : "text-slate-500"}">Topic</div>
+            <div class="mt-0.5 font-semibold">${escapeHtml(t.name)}</div>
+            <div class="mt-2 flex flex-wrap gap-2 text-xs">
+              <span class="rounded-full px-2 py-1 border ${selected ? "bg-slate-800 border-slate-700" : "bg-slate-50"}">
+                ${t.files.length} files
+              </span>
+              <span class="rounded-full px-2 py-1 border ${selected ? "bg-slate-800 border-slate-700" : "bg-slate-50"}">
+                ${t.outcomes.length} outcomes
+              </span>
+              <span class="rounded-full px-2 py-1 border ${selected ? "bg-slate-800 border-slate-700" : "bg-slate-50"}">
+                ${t.flashcards.length} flashcards
+              </span>
+            </div>
+          </button>
+        `;
+      }).join("");
+
+      if (topics.length === 0) {
+        topicList.innerHTML = `
+          <div class="rounded-2xl border bg-slate-50 p-4 text-sm text-slate-600">
+            No topics yet. Click “+ Add Topic”.
+          </div>
+        `;
+      }
+    }
+
+    function renderWorkspace() {
+      const s = getSubject();
+      const w = getWeek();
+      const t = getTopic();
+
+      if (!s || !w || !t) {
+        workspaceTitle.textContent = "Select a topic";
+        workspaceSub.textContent = "Choose subject → week → topic to load content and tools.";
+        fileList.innerHTML = "";
+        outcomeList.innerHTML = "";
+        flashList.innerHTML = "";
+        roleplayText.value = "";
+        summaryText.value = "";
+        return;
+      }
+
+      workspaceTitle.textContent = t.name;
+      workspaceSub.textContent = `${s.name} • ${w.name} • Manage content and learning tools`;
+
+      // Files
+      fileList.innerHTML = t.files.map(f => `
+        <div class="rounded-2xl border bg-slate-50 p-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="text-xs text-slate-500">${escapeHtml(f.type)}</div>
+              <div class="mt-1 font-semibold">${escapeHtml(f.title)}</div>
+              <div class="mt-1 text-xs text-slate-500">Prototype file item</div>
+            </div>
+            <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50"
+              onclick="removeFile('${f.id}')">Remove</button>
+          </div>
+        </div>
+      `).join("");
+
+      // Outcomes
+      outcomeList.innerHTML = t.outcomes.map((o, idx) => `
+        <div class="rounded-2xl border bg-slate-50 p-3 flex items-start justify-between gap-3">
+          <div class="text-sm text-slate-700">${escapeHtml(o)}</div>
+          <button class="rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50"
+            onclick="removeOutcome(${idx})">Remove</button>
+        </div>
+      `).join("");
+
+      // Role-play / Summary
+      roleplayText.value = t.roleplay || "";
+      summaryText.value = t.summary || "";
+
+      // Flashcards
+      flashList.innerHTML = t.flashcards.map(c => `
+        <div class="rounded-2xl border bg-slate-50 p-4">
+          <div class="text-xs text-slate-500">Q</div>
+          <div class="mt-1 text-sm font-semibold">${escapeHtml(c.q)}</div>
+          <div class="mt-3 text-xs text-slate-500">A</div>
+          <div class="mt-1 text-sm text-slate-700">${escapeHtml(c.a)}</div>
+          <button class="mt-4 w-full rounded-xl border bg-white px-3 py-2 text-xs hover:bg-slate-50"
+            onclick="removeFlash('${c.id}')">Remove card</button>
+        </div>
+      `).join("");
+    }
+
+    function renderTabs() {
+      // Buttons
+      tabBtns.forEach(b => {
+        const active = b.dataset.tab === state.activeTab;
+        b.className = active
+          ? "tabBtn rounded-full bg-slate-900 px-4 py-2 text-sm text-white"
+          : "tabBtn rounded-full border bg-white px-4 py-2 text-sm hover:bg-slate-50";
+      });
+      // Panels
+      Object.entries(tabPanels).forEach(([k, el]) => {
+        if (k === state.activeTab) el.classList.remove("hidden");
+        else el.classList.add("hidden");
+      });
+    }
+
+    // -----------------------
+    // Actions
+    // -----------------------
+    window.selectTopic = function(topicId) {
+      state.topicId = topicId;
+      toast("Topic changed → workspace loaded.");
+      renderAll();
+    };
+
+    function onAddWeek() {
+      const s = getSubject();
+      if (!s) return;
+
+      const name = prompt("New week name:", `Week ${s.weeks.length + 1} • New Week`);
+      if (!name) return;
+
+      const newWeek = { id: uid(), name, topics: [] };
+      s.weeks.push(newWeek);
+      state.weekId = newWeek.id;
+      state.topicId = null;
+      toast("Week added.");
+      renderAll();
+    }
+
+    function onRenameWeek() {
+      const w = getWeek();
+      if (!w) return;
+      const name = prompt("Rename week:", w.name);
+      if (!name) return;
+      w.name = name;
+      toast("Week renamed.");
+      renderAll();
+    }
+
+    function onRemoveWeek() {
+      const s = getSubject();
+      const w = getWeek();
+      if (!s || !w) return;
+
+      const ok = confirm(`Remove "${w.name}"? This will remove its topics too.`);
+      if (!ok) return;
+
+      s.weeks = s.weeks.filter(x => x.id !== w.id);
+      state.weekId = s.weeks[0]?.id ?? null;
+      state.topicId = s.weeks[0]?.topics[0]?.id ?? null;
+      toast("Week removed.");
+      renderAll();
+    }
+
+    function onAddTopic() {
+      const w = getWeek();
+      if (!w) return;
+
+      const name = prompt("New topic name:", `Topic ${w.topics.length + 1}`);
+      if (!name) return;
+
+      const t = topic(uid(), name);
+      // Start clean if you prefer:
+      t.files = [];
+      t.outcomes = [];
+      t.flashcards = [];
+      w.topics.push(t);
+
+      state.topicId = t.id;
+      toast("Topic added.");
+      renderAll();
+    }
+
+    function onAddFile() {
+      const t = getTopic();
+      if (!t) return toast("Select a topic first.");
+      const title = prompt("File title:", "Worksheet / Notes / Slides");
+      if (!title) return;
+      const type = prompt("Type (e.g., PDF, PPT, Link):", "PDF") || "PDF";
+      t.files.push({ id: uid(), title, type });
+      toast("File added.");
+      renderWorkspace();
+      renderTopics();
+    }
+
+    window.removeFile = function(fileId) {
+      const t = getTopic();
+      if (!t) return;
+      t.files = t.files.filter(f => f.id !== fileId);
+      toast("File removed.");
+      renderWorkspace();
+      renderTopics();
+    };
+
+    function onAddOutcome() {
+      const t = getTopic();
+      if (!t) return toast("Select a topic first.");
+      const text = prompt("Learning outcome:", "Students can ...");
+      if (!text) return;
+      t.outcomes.push(text);
+      toast("Outcome added.");
+      renderWorkspace();
+      renderTopics();
+    }
+
+    window.removeOutcome = function(idx) {
+      const t = getTopic();
+      if (!t) return;
+      t.outcomes.splice(idx, 1);
+      toast("Outcome removed.");
+      renderWorkspace();
+      renderTopics();
+    };
+
+    function onAddFlashcard() {
+      const t = getTopic();
+      if (!t) return toast("Select a topic first.");
+      const q = prompt("Flashcard question:", "What is ...?");
+      if (!q) return;
+      const a = prompt("Flashcard answer:", "It is ...");
+      if (a === null) return;
+      t.flashcards.push({ id: uid(), q, a });
+      toast("Flashcard added.");
+      renderWorkspace();
+      renderTopics();
+    }
+
+    window.removeFlash = function(id) {
+      const t = getTopic();
+      if (!t) return;
+      t.flashcards = t.flashcards.filter(c => c.id !== id);
+      toast("Flashcard removed.");
+      renderWorkspace();
+      renderTopics();
+    };
+
+    function onGenerateQuizDemo() {
+      const t = getTopic();
+      if (!t) return toast("Select a topic first.");
+
+      const diff = document.getElementById("quizDifficulty").value;
+      const count = document.getElementById("quizCount").value;
+      const type = document.getElementById("quizType").value;
+
+      const demo = [];
+      for (let i = 1; i <= Number(count); i++) {
+        demo.push({
+          q: `[${type} • ${diff}] ${t.name}: Question ${i}`,
+          options: type === "MCQ" ? ["Option A", "Option B", "Option C", "Option D"] : undefined,
+          answer: type === "MCQ" ? "Option B" : "Sample answer"
+        });
+      }
+
+      document.getElementById("quizOutput").textContent =
+        JSON.stringify({ topic: t.name, difficulty: diff, type, questions: demo }, null, 2);
+
+      toast("Quiz generated (demo).");
+    }
+
+    // -----------------------
+    // Utilities
+    // -----------------------
+    function toast(msg) {
+      statusBar.textContent = msg;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    // -----------------------
+    // Init
+    // -----------------------
+    function init() {
+      renderSubjects();
+
+      const subj = getSubject();
+      if (!state.weekId) state.weekId = subj?.weeks[0]?.id ?? null;
+
+      const wk = getWeek();
+      if (!state.topicId) state.topicId = wk?.topics[0]?.id ?? null;
+
+      renderAll();
+    }
+
+    init();
+  </script>
 </body>
 </html>
